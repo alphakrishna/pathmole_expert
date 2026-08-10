@@ -75,13 +75,13 @@ def footer_html(p):
         <div class="footer-brand">
           <img src="{p}assets/logo-white-bg.png" alt="PathMole Expert Lab" />
           <p>Specialist Histopathology &amp; Molecular Diagnostics referral laboratory, Sector 6, Gurugram (Haryana).</p>
-          <p style="margin-top:.6rem;font-style:italic;color:rgba(255,255,255,.5)">Precision in Diagnosis. Confidence in Results.</p>
+          <p style="margin-top:.6rem;font-style:italic;color:rgba(255,255,255,.5)">Precision in Diagnosis. Confidence in Care.</p>
         </div>
         <div class="footer-col">
           <h4>Services</h4>
           <a href="{p}services.html">Histopathology</a>
+          <a href="{p}services.html">Cytopathology</a>
           <a href="{p}services.html">Molecular Diagnostics</a>
-          <a href="{p}services.html">Immunohistochemistry</a>
           <a href="{p}tests.html">Test List</a>
           <a href="{p}quality.html">Quality</a>
         </div>
@@ -198,28 +198,68 @@ PAGES = []
 # ABOUT
 PAGES.append(dict(filename="about.html", title="About the Lab", active="about",
     desc="About PathMole Expert Lab — a specialist Histopathology & Molecular Diagnostics referral laboratory in Gurugram, managed by highly experienced doctors.",
-    main=phero("About PathMole Expert Lab", "A specialist Histopathology &amp; Molecular Diagnostics referral laboratory, managed by highly experienced doctors.", "About") + """
+    main=phero("About the Lab", "Where science meets clinical decision-making &mdash; dependable diagnostic information that helps clinicians make better decisions.", "About") + """
   <section class="section">
     <div class="container grid grid-2" style="align-items:center">
       <div class="reveal">
         <span class="eyebrow">Our story</span>
-        <h2>Two disciplines, one diagnostic platform</h2>
-        <p>PathMole Expert Lab brings histopathology and molecular diagnostics together to serve referring clinicians, hospitals, and diagnostic centres across Gurugram and Delhi NCR. Histopathology answers <em>what the disease looks like</em>; molecular diagnostics answers <em>what is driving it</em> — together they enable precise, actionable diagnoses.</p>
-        <p>[PLACEHOLDER: expand the founding story, philosophy, and what makes the lab distinctive — client to provide.]</p>
+        <h2>Where science meets clinical decision-making</h2>
+        <p>Our Histopathology &amp; Molecular Biology Laboratory has been established with a simple objective: to provide dependable diagnostic information that helps clinicians make better decisions.</p>
+        <p>The laboratory brings together two complementary areas of modern diagnostic medicine. <strong>Histopathology</strong> allows us to understand disease through the examination of tissues and cells. <strong>Molecular diagnostics</strong> allows us to look deeper &mdash; at DNA, RNA, microorganisms and molecular alterations that may not be visible through conventional microscopy alone. Together, these disciplines provide a more comprehensive approach to diagnosis.</p>
       </div>
       <div class="reveal">
-        <div class="map-card"><div class="map-card-head">Facility photo — [PLACEHOLDER]</div>
+        <div class="map-card"><div class="map-card-head">Facility photo &mdash; [PLACEHOLDER]</div>
         <div class="map-card-body"><strong>Sector 6, Gurugram</strong><p>A modern, technology-enabled laboratory with a roadmap toward digital pathology and advanced molecular testing.</p></div></div>
       </div>
     </div>
   </section>
 
   <section class="section section--soft">
+    <div class="container grid grid-2" style="gap:2.5rem">
+      <div class="reveal">
+        <span class="eyebrow">Built around quality</span>
+        <h2>Quality begins before the microscope</h2>
+        <p>Our laboratory processes are designed around the principles of <strong>Accuracy &middot; Quality &middot; Traceability &middot; Timeliness &middot; Patient Safety</strong>.</p>
+        <p>We recognise that laboratory quality begins long before a specimen reaches the microscope or analyser. Proper specimen collection, identification, transportation, processing, testing, interpretation and reporting are all essential components of a reliable diagnostic service.</p>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Clinician-centric diagnostics</span>
+        <h2>Reports that mean something</h2>
+        <p>A laboratory report should not merely present numbers or microscopic findings. It should provide information that is meaningful in the clinical context. Our approach therefore emphasises:</p>
+        <ul class="tick-list">
+          <li>Clear and structured reporting</li>
+          <li>Appropriate clinical correlation</li>
+          <li>Communication with treating clinicians when required</li>
+          <li>Defined turnaround times</li>
+          <li>Appropriate test selection</li>
+          <li>Quality assurance at every stage</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container">
-      <div class="section-head reveal"><span class="eyebrow">Leadership</span><h2>Managed by highly experienced doctors</h2></div>
-      <div class="grid grid-2">
-        <article class="card reveal"><h3>Dr. Arpan Gandhi</h3><p>[PLACEHOLDER: ~3 decades in pathology, laboratory medicine, and quality systems. Add full title, qualifications, and bio — client to confirm.]</p></article>
-        <article class="card reveal"><h3>Mr. Ashok Yadav</h3><p>[PLACEHOLDER: 20+ years in diagnostic laboratory operations. Confirm exact name/title — the contract lists &ldquo;Dr. Ashok&rdquo;. Add bio — client to confirm.]</p></article>
+      <div class="section-head reveal"><span class="eyebrow">Technology &amp; innovation</span><h2>Modern tools, experienced minds</h2><p>Our laboratory is being developed with an emphasis on appropriate technology that improves accuracy, efficiency, traceability and diagnostic capability.</p></div>
+      <div class="grid grid-4">
+        <article class="card reveal"><h3>Histopathology systems</h3><p>Modern tissue-processing and advanced staining techniques.</p></article>
+        <article class="card reveal"><h3>Molecular platforms</h3><p>Molecular amplification and PCR-based diagnostic technologies.</p></article>
+        <article class="card reveal"><h3>Digital workflows</h3><p>Laboratory information systems and data-driven quality monitoring.</p></article>
+        <article class="card reveal"><h3>Future-ready</h3><p>A roadmap toward digital pathology capabilities.</p></article>
+      </div>
+      <p class="center" style="margin-top:1.6rem;font-style:italic;color:var(--ink-400)">Technology is an enabler &mdash; it should support, not replace, professional expertise: <strong>experienced professionals + reliable processes + appropriate technology + quality culture</strong>.</p>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head reveal"><span class="eyebrow">Leadership</span><h2>Clinical &amp; laboratory leadership</h2></div>
+      <div class="grid" style="max-width:760px;margin:0 auto">
+        <article class="card reveal">
+          <h3>Dr. Arpan Gandhi</h3>
+          <p style="color:var(--accent);font-weight:600;margin-bottom:.6rem">Director &ndash; Laboratory Services | Diagnostic Medicine &amp; Laboratory Leadership</p>
+          <p>With nearly three decades of experience in diagnostic medicine and laboratory services, Dr. Gandhi has worked across pathology, laboratory operations, quality, clinical collaboration, education and diagnostic leadership. His focus is on building laboratory systems that combine clinical expertise, operational excellence, technology and quality.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -228,14 +268,48 @@ PAGES.append(dict(filename="about.html", title="About the Lab", active="about",
 # SERVICES
 PAGES.append(dict(filename="services.html", title="Services", active="services",
     desc="Services at PathMole Expert Lab — Histopathology, Molecular Diagnostics, and Immunohistochemistry for referring clinicians.",
-    main=phero("Our Services", "Comprehensive histopathology and molecular testing, supported by expert pathologist review.", "Services") + """
+    main=phero("Our Services", "Histopathology, cytopathology and molecular diagnostics &mdash; accurate, reproducible and clinically relevant.", "Services") + """
   <section class="section">
     <div class="container">
-      <div class="grid" style="gap:2rem">
-        <article class="card reveal"><div class="card-icon service-card"></div><h2>Histopathology</h2><p><em>&ldquo;What does the disease look like?&rdquo;</em> Microscopic examination of biopsy and surgical specimens (H&amp;E), with synoptic reporting and special stains where indicated. Includes frozen-section support by arrangement.</p></article>
-        <article class="card reveal"><h2>Molecular Diagnostics</h2><p><em>&ldquo;What is driving it?&rdquo;</em> Mutation analysis, NGS panels, and FISH to identify actionable alterations — oncology-leaning, precision-diagnosis focus.</p></article>
-        <article class="card reveal"><h2>Immunohistochemistry (IHC)</h2><p>Diagnostic and predictive marker panels — ER/PR, HER2, PD-L1, MMR and more — to support prognosis and therapy selection.</p></article>
-        <article class="card reveal"><h2>Quality &amp; Turnaround</h2><p>Standardised protocols, expert sign-out, and responsive reporting. [PLACEHOLDER: add accreditation details once confirmed.]</p></article>
+      <div class="reveal" style="max-width:820px">
+        <span class="eyebrow">Histopathology</span>
+        <h2>Seeing disease through tissue</h2>
+        <p>Histopathology remains one of the most important pillars of diagnostic medicine. Examination of tissue under the microscope allows the pathologist to identify disease patterns, establish diagnoses and provide information that can influence treatment. Our histopathology service is designed to provide accurate, reproducible and clinically relevant tissue diagnosis.</p>
+      </div>
+      <div class="grid grid-3" style="margin-top:1.6rem">
+        <article class="card reveal"><ul class="tick-list"><li>Routine biopsy examination</li><li>Small and large surgical specimens</li><li>Gastrointestinal biopsies</li><li>Gynecological specimens</li></ul></article>
+        <article class="card reveal"><ul class="tick-list"><li>Head and neck specimens</li><li>Skin and soft tissue specimens</li><li>Inflammatory and infectious conditions</li><li>Benign and malignant lesions</li></ul></article>
+        <article class="card reveal"><ul class="tick-list"><li>Histochemical stains</li><li>Immunohistochemistry, where indicated</li><li>Specialised pathology consultation</li></ul></article>
+      </div>
+      <div class="notice reveal" style="margin-top:1.8rem"><strong>From specimen to diagnosis:</strong> Specimen Collection &rarr; Accessioning &rarr; Gross Examination &rarr; Tissue Processing &rarr; Embedding &rarr; Sectioning &rarr; Staining &rarr; Microscopy &rarr; Interpretation &rarr; Reporting. Quality at every stage contributes to the quality of the final diagnosis.</div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container grid grid-2" style="gap:2.5rem;align-items:center">
+      <div class="reveal">
+        <span class="eyebrow">Cytopathology</span>
+        <h2>Diagnosis at the level of cells</h2>
+        <p>Evaluation of cells from various body sites and fluids for the detection and diagnosis of disease &mdash; a valuable, minimally invasive complement to tissue histopathology.</p>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Specialised diagnostic support</span>
+        <h2>Clinician-focused interpretation</h2>
+        <p>Consultation and correlation of laboratory findings with clinical information, so results are meaningful in the clinical context &mdash; not just numbers on a report.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="reveal" style="max-width:820px">
+        <span class="eyebrow">Molecular biology &amp; molecular diagnostics</span>
+        <h2>Looking beyond what the microscope can see</h2>
+        <p>Modern diagnostic medicine increasingly depends on understanding disease at the molecular level. Molecular diagnostics examines genetic material such as DNA and RNA to detect specific pathogens, genetic alterations and other molecular targets. Our molecular biology laboratory is designed to support the growing need for rapid, specific and clinically relevant molecular testing.</p>
+      </div>
+      <div class="grid grid-2" style="margin-top:1.6rem">
+        <article class="card reveal"><h3>Molecular diagnostic applications</h3><ul class="tick-list"><li>Infectious disease diagnosis</li><li>Detection of bacterial and viral pathogens</li><li>Identification of specific genetic targets</li><li>Mutation and molecular marker analysis</li><li>Oncology-related molecular testing</li><li>Targeted PCR-based investigations</li><li>Other specialised molecular assays</li></ul></article>
+        <article class="card reveal"><h3>PCR-based diagnostics</h3><p>Polymerase Chain Reaction (PCR) is one of the most important technologies in modern molecular diagnostics. It allows specific regions of DNA or RNA to be amplified and detected, making it possible to identify targets that may be difficult or impossible to detect using conventional methods alone.</p><p style="margin-top:.8rem;font-style:italic;color:var(--ink-400)">Molecular diagnostics is powerful &mdash; its value depends on doing it correctly, with rigorous control at every stage.</p></article>
       </div>
       <div class="center" style="margin-top:2.5rem"><a href="tests.html" class="btn-secondary">Browse the test list</a></div>
     </div>
@@ -303,12 +377,41 @@ PAGES.append(dict(filename="contact.html", title="Contact", active="contact",
 # QUALITY
 PAGES.append(dict(filename="quality.html", title="Quality & Accreditation", active="",
     desc="Quality and accreditation at PathMole Expert Lab — standardised protocols, expert review, and reliable turnaround.",
-    main=phero("Quality &amp; Accreditation", "Standardised protocols, expert pathologist review, and dependable turnaround.", "Quality") + """
+    main=phero("Quality &amp; Patient Safety", "Quality is not a department &mdash; it is a culture, applied across the entire diagnostic pathway.", "Quality") + """
   <section class="section"><div class="container">
+    <div class="reveal" style="max-width:820px;margin-bottom:2rem">
+      <h2>Quality is not a department. It is a culture.</h2>
+      <p>In laboratory medicine, even a technically perfect test cannot compensate for a poorly collected, identified or transported specimen. That is why we approach quality across the entire diagnostic pathway.</p>
+    </div>
+    <div class="section-head reveal"><span class="eyebrow">Our quality framework</span><h2>Quality at every stage</h2></div>
     <div class="grid grid-3">
-      <article class="card reveal"><h3>Standardised protocols</h3><p>[PLACEHOLDER: SOP-driven processing and internal QC.]</p></article>
-      <article class="card reveal"><h3>Expert sign-out</h3><p>[PLACEHOLDER: every report reviewed by experienced pathologists.]</p></article>
-      <article class="card reveal"><h3>Accreditation</h3><p>[PLACEHOLDER: add NABL/CAP or other accreditations ONLY once confirmed by the client.]</p></article>
+      <article class="card reveal"><h3>Pre-analytical quality</h3><p>Correct patient identification, specimen collection, labelling, fixation, transportation and accessioning.</p></article>
+      <article class="card reveal"><h3>Analytical quality</h3><p>Validated procedures, appropriate controls, standardised techniques and trained personnel.</p></article>
+      <article class="card reveal"><h3>Post-analytical quality</h3><p>Result verification, structured reporting, timely communication and appropriate documentation.</p></article>
+    </div>
+  </div></section>
+
+  <section class="section section--soft"><div class="container grid grid-2" style="gap:2.5rem">
+    <div class="reveal">
+      <span class="eyebrow">Our commitment</span>
+      <h2>How we keep quality consistent</h2>
+      <ul class="tick-list">
+        <li>Reducing pre-analytical errors</li>
+        <li>Maintaining specimen traceability</li>
+        <li>Monitoring turnaround time</li>
+        <li>Ensuring reproducibility</li>
+        <li>Monitoring quality indicators</li>
+        <li>Learning from errors and near misses</li>
+        <li>Continuing staff education</li>
+        <li>Implementing corrective and preventive actions</li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Quality beyond compliance</span>
+      <h2>Doing the right thing consistently</h2>
+      <p>Accreditation and standards are important. But true laboratory quality goes beyond compliance.</p>
+      <p><strong>Quality means doing the right thing consistently &mdash; even when nobody is watching.</strong></p>
+      <p class="form-note" style="margin-top:1rem">[PLACEHOLDER: list specific accreditations (e.g. NABL) here ONLY once confirmed by the client.]</p>
     </div>
   </div></section>
 """ + cta_band()))
@@ -316,11 +419,34 @@ PAGES.append(dict(filename="quality.html", title="Quality & Accreditation", acti
 # PHYSICIANS
 PAGES.append(dict(filename="physicians.html", title="Physicians", active="",
     desc="The pathologists and team behind PathMole Expert Lab.",
-    main=phero("Physicians &amp; Team", "Managed by highly experienced doctors.", "Physicians") + """
-  <section class="section"><div class="container"><div class="grid grid-2">
-    <article class="card reveal"><h3>Dr. Arpan Gandhi</h3><p>[PLACEHOLDER: title, qualifications, ~3 decades in pathology & quality systems — client to confirm.]</p></article>
-    <article class="card reveal"><h3>Mr. Ashok Yadav</h3><p>[PLACEHOLDER: 20+ years in lab operations; confirm exact name/title — client to confirm.]</p></article>
-  </div></div></section>
+    main=phero("Our Team &amp; For Clinicians", "Experience, expertise and commitment &mdash; working as an extension of your clinical team.", "Physicians") + """
+  <section class="section"><div class="container">
+    <div class="reveal" style="max-width:820px">
+      <span class="eyebrow">Our team</span>
+      <h2>Experience. Expertise. Commitment.</h2>
+      <p>A diagnostic laboratory is only as strong as the people behind it. Our team brings together professionals with experience in pathology, laboratory operations, technical services, quality management and molecular diagnostics. We build a culture where people are encouraged to follow evidence-based practices, ask questions, communicate openly, learn continuously, take ownership of quality, and put patient safety first.</p>
+    </div>
+    <div class="grid" style="max-width:760px;margin:1.6rem auto 0">
+      <article class="card reveal">
+        <h3>Dr. Arpan Gandhi</h3>
+        <p style="color:var(--accent);font-weight:600;margin-bottom:.6rem">Director &ndash; Laboratory Services | Diagnostic Medicine &amp; Laboratory Leadership</p>
+        <p>With nearly three decades of experience in diagnostic medicine and laboratory services, Dr. Gandhi has worked across pathology, laboratory operations, quality, clinical collaboration, education and diagnostic leadership. His focus is on building laboratory systems that combine clinical expertise, operational excellence, technology and quality.</p>
+      </article>
+    </div>
+  </div></section>
+
+  <section class="section section--soft"><div class="container">
+    <div class="section-head reveal"><span class="eyebrow">For clinicians</span><h2>Diagnostics that support clinical decisions</h2><p>We aim to work as an extension of the clinical team &mdash; providing results that are accurate, timely, understandable and clinically relevant.</p></div>
+    <div class="grid grid-3">
+      <article class="card reveal"><h3>Reliable testing</h3><p>Standardised laboratory processes designed to maintain consistency and quality.</p></article>
+      <article class="card reveal"><h3>Defined turnaround times</h3><p>Clear expectations regarding reporting timelines.</p></article>
+      <article class="card reveal"><h3>Clinically relevant reports</h3><p>Reports structured to communicate the information most important for decision-making.</p></article>
+      <article class="card reveal"><h3>Pathologist consultation</h3><p>Direct professional communication when a case requires discussion or clarification.</p></article>
+      <article class="card reveal"><h3>Integrated diagnostics</h3><p>Histopathology and molecular findings that complement each other when clinically indicated.</p></article>
+      <article class="card reveal"><h3>Specimen submission</h3><p>Contact us about test availability, specimen requirements, fixation and transport, sample volume, turnaround times, test selection and special requirements.</p></article>
+    </div>
+    <p class="center" style="margin-top:1.6rem;font-style:italic;color:var(--ink-400)">When in doubt about the right test or specimen, speak to us before sending the sample.</p>
+  </div></section>
 """ + cta_band()))
 
 # PUBLICATIONS / RESEARCH
@@ -361,7 +487,7 @@ PAGES.append(dict(filename="patients.html", title="Patients", active="",
     desc="Patient information and downloadable form for PathMole Expert Lab.",
     main=phero("For Patients", "Clear, reassuring information — and a form you can fill offline.", "Patients") + """
   <section class="section"><div class="container grid grid-2" style="align-items:center">
-    <div class="reveal"><span class="eyebrow">Patient information</span><h2>Coming in for a test?</h2><p>[PLACEHOLDER: what to expect, sample collection, timings, and how to collect reports.]</p><p>Download the patient form, fill it offline, and bring it with you.</p>
+    <div class="reveal"><span class="eyebrow">Patient information</span><h2>Coming in for a test?</h2><p>Please carry your prescription / request form and any relevant previous reports whenever applicable. Accurate diagnosis begins with the right specimen and the right test.</p><p>Download the patient form, fill it offline, and bring it with you.</p>
       <a href="assets/pathmole-patient-form.pdf" download class="btn-primary">Download Patient Form (PDF)</a>
       <p class="form-note" style="margin-top:.6rem">[PLACEHOLDER: add the PDF at assets/pathmole-patient-form.pdf]</p>
     </div>

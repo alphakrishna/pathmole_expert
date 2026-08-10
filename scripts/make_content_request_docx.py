@@ -161,7 +161,7 @@ page_heading(1, "Home page")
 page_file("index.html", "The landing page")
 section_label("Hero (top banner)")
 fixed_line("Fixed headline", "“Precision diagnostics your clinicians can trust”")
-fixed_line("Fixed tagline", "“Precision in Diagnosis. Confidence in Results.”")
+fixed_line("Fixed tagline", "“Precision in Diagnosis. Confidence in Care.”")
 prompt("Change the headline or tagline? (optional)", lines=2)
 section_label("Announcement strip")
 prompt("Latest announcement or news headline to show at the top.",
