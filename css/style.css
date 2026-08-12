@@ -187,7 +187,18 @@ p:last-child { margin-bottom: 0; }
    being centered in the viewport; line length is capped on the elements below. */
 .hero-inner { position: relative; z-index: 2; padding-block: clamp(3.5rem, 8vw, 6.5rem); text-align: left; }
 .hero h1 { color: #fff; max-width: 720px; }
-.hero .hero-sub { font-size: 1.15rem; color: rgba(255,255,255,.85); margin: 1.1rem 0 1.8rem; max-width: 600px; }
+/* ── Hero accent colour ──────────────────────────────────────────────────
+   The eyebrow + the highlighted phrase in the headline both use this ONE
+   variable. To try a different colour, change the value below and refresh.
+   Some options to paste in:
+     #EC008C  brand magenta      #F5B301  gold / amber
+     #37C6E0  cyan / sky         #35C79A  soft teal
+     #FFC24B  warm honey         #FFFFFF  plain white
+------------------------------------------------------------------------- */
+.hero { --hero-accent: #4DA8FF; }
+.hero .hero-eyebrow { color: var(--hero-accent); opacity: 1; text-shadow: 0 1px 8px rgba(10,14,45,.55); }
+.hero h1 .text-pink { color: var(--hero-accent); text-shadow: 0 2px 14px rgba(10,14,45,.5); }
+.hero .hero-sub { font-size: 1.15rem; color: rgba(255,255,255,.9); margin: 1.1rem 0 1.8rem; max-width: 600px; }
 .hero .tagline { font-family: var(--font-heading); font-style: italic; color: #fff; font-weight: 500; opacity: .95; margin-top: 1.6rem; }
 .hero .cta-pair .btn-primary { background: #fff; color: var(--brand-navy); box-shadow: var(--shadow-md); }
 .hero .cta-pair .btn-primary:hover { background: var(--bg-soft); }
@@ -374,14 +385,25 @@ p:last-child { margin-bottom: 0; }
 .info-item .card-icon { width: 44px; height: 44px; flex-shrink: 0; margin: 0; }
 .info-item strong { color: var(--brand-navy); font-family: var(--font-heading); }
 
-/* Page hero (inner pages) */
-.page-hero { background: var(--brand-navy); color: #fff; position: relative; overflow: hidden; }
-.page-hero::before { content: ""; position: absolute; top: 0; right: 0; width: 35%; height: 100%; background: var(--brand-pink); clip-path: polygon(40% 0, 100% 0, 100% 100%, 0 100%); opacity: .35; }
+/* Page hero (inner pages) — mirrors the homepage hero's depth so interior
+   headers don't read flat: navy gradient base, a stronger magenta chevron, a
+   faint watermark ring, and a magenta accent bar under the title for contrast. */
+.page-hero { background: linear-gradient(120deg, var(--brand-navy-deep) 0%, var(--brand-navy) 58%, #2a34a8 100%); color: #fff; position: relative; overflow: hidden; }
+.page-hero::before { /* magenta diagonal accent (chevron motif) — matches .hero */
+  content: ""; position: absolute; top: 0; right: 0; width: 42%; height: 100%;
+  background: linear-gradient(135deg, var(--brand-pink) 0%, var(--brand-navy-deep) 80%);
+  clip-path: polygon(28% 0, 100% 0, 100% 100%, 0 100%); opacity: .5; pointer-events: none; }
+.page-hero::after { /* faint watermark ring, echoing the homepage hero */
+  content: ""; position: absolute; right: -50px; bottom: -70px; width: 300px; height: 300px;
+  border: 34px solid rgba(255,255,255,.06); border-radius: 50%; pointer-events: none; }
 .page-hero-inner { position: relative; z-index: 2; padding: clamp(2.5rem, 6vw, 4rem) 0; }
 .page-hero h1 { color: #fff; }
-.page-hero p { color: rgba(255,255,255,.82); margin-top: .6rem; max-width: 640px; }
-.breadcrumb { font-size: .82rem; color: rgba(255,255,255,.7); margin-bottom: .8rem; }
-.breadcrumb a { color: rgba(255,255,255,.7); }
+.page-hero h1::after { /* magenta accent bar gives the title pop against the navy */
+  content: ""; display: block; width: 66px; height: 4px; border-radius: 2px;
+  background: var(--brand-pink); margin-top: 1rem; }
+.page-hero p { color: rgba(255,255,255,.9); margin-top: 1rem; max-width: 640px; }
+.breadcrumb { font-size: .82rem; color: rgba(255,255,255,.8); margin-bottom: .8rem; }
+.breadcrumb a { color: rgba(255,255,255,.8); }
 .breadcrumb a:hover { color: #fff; }
 
 /* Test list (tests.html) */
