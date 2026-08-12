@@ -149,11 +149,29 @@ p:last-child { margin-bottom: 0; }
 .mobile-menu.open { display: block; }
 
 /* ---------- 8. Hero ---------- */
-.hero { position: relative; background: var(--brand-navy); color: #fff; overflow: hidden; }
-.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.hero { position: relative; background: var(--brand-navy); color: #fff; overflow: hidden;
+  display: flex; align-items: center; min-height: 86vh; min-height: 86dvh; }
+.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
+/* Mobile-first: strong vertical scrim keeps full-width text readable over bright footage */
 .hero-media-overlay { position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(90deg, rgba(26,34,112,.94) 0%, rgba(26,34,112,.82) 42%, rgba(35,44,142,.5) 100%); }
+  background: linear-gradient(180deg, rgba(26,34,112,.86) 0%, rgba(26,34,112,.68) 50%, rgba(26,34,112,.84) 100%); }
 @media (prefers-reduced-motion: reduce) { .hero-video { display: none; } }
+/* Portrait tablets (e.g. iPad 768): taller hero, but keep a balanced horizontal
+   scrim so the right side of the video isn't washed out at this narrow width */
+@media (min-width: 768px) {
+  .hero { min-height: min(84vh, 760px); }
+  .hero-media-overlay { background: linear-gradient(90deg, rgba(26,34,112,.92) 0%, rgba(26,34,112,.82) 50%, rgba(26,34,112,.62) 100%); }
+}
+/* Wide screens: lighter right side lets more of the equipment footage show.
+   Also cap the hero shorter here — on laptops 84vh leaves a lot of empty navy
+   below the copy and makes the page feel like a long scroll past the fold. */
+@media (min-width: 1024px) {
+  .hero { min-height: min(64vh, 560px); }
+  /* Trim the hero's own vertical padding on desktop — the clamp() maxes at ~104px
+     top+bottom, which is what pushed the hero past a single laptop screen. */
+  .hero-inner { padding-block: clamp(2.25rem, 3.5vw, 3.5rem); }
+  .hero-media-overlay { background: linear-gradient(90deg, rgba(26,34,112,.94) 0%, rgba(26,34,112,.8) 45%, rgba(35,44,142,.4) 100%); }
+}
 .hero::before { /* magenta diagonal accent (chevron motif) */
   content: ""; position: absolute; top: 0; right: 0; width: 42%; height: 100%;
   background: linear-gradient(135deg, var(--brand-pink) 0%, var(--brand-navy-deep) 78%);
@@ -163,8 +181,12 @@ p:last-child { margin-bottom: 0; }
   content: ""; position: absolute; right: -60px; bottom: -80px; width: 380px; height: 380px;
   border: 40px solid rgba(255,255,255,.05); border-radius: 50%; pointer-events: none;
 }
-.hero-inner { position: relative; z-index: 2; padding: clamp(3.5rem, 8vw, 6.5rem) 0; max-width: 720px; }
-.hero h1 { color: #fff; }
+/* padding-block only — keeps the container's horizontal gutter so hero text
+   never sits flush against the screen edge on phones/tablets */
+/* Full container width so the text block left-aligns with the nav/logo instead of
+   being centered in the viewport; line length is capped on the elements below. */
+.hero-inner { position: relative; z-index: 2; padding-block: clamp(3.5rem, 8vw, 6.5rem); text-align: left; }
+.hero h1 { color: #fff; max-width: 720px; }
 .hero .hero-sub { font-size: 1.15rem; color: rgba(255,255,255,.85); margin: 1.1rem 0 1.8rem; max-width: 600px; }
 .hero .tagline { font-family: var(--font-heading); font-style: italic; color: #fff; font-weight: 500; opacity: .95; margin-top: 1.6rem; }
 .hero .cta-pair .btn-primary { background: #fff; color: var(--brand-navy); box-shadow: var(--shadow-md); }
@@ -386,4 +408,15 @@ p:last-child { margin-bottom: 0; }
   .cta-pair { flex-direction: column; align-items: stretch; }
   .cta-pair .btn-primary, .cta-pair .btn-secondary { justify-content: center; }
   .top-bar-actions { width: 100%; margin-left: 0; justify-content: flex-start; }
+  /* Hero on phones: a touch shorter, tighter padding, slightly smaller sub-copy.
+     h1 is anchored to the 360px reference (~32px @360) and scales fluidly 320–620. */
+  .hero { min-height: 78dvh; }
+  .hero-inner { padding-block: 2.75rem; }
+  .hero h1 { font-size: clamp(1.75rem, 8.9vw, 2.2rem); }
+  .hero .hero-sub { font-size: 1.02rem; margin: .9rem 0 1.5rem; }
+  .hero .tagline { margin-top: 1.2rem; }
+}
+@media (max-width: 400px) {
+  .container { padding: 0 1rem; }
+  .hero .hero-sub { font-size: .98rem; }
 }
