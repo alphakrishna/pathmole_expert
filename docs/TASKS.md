@@ -4,6 +4,8 @@
 > **PATHMOLE-WEBSITE-GUIDE.md** for how to build each item.
 > **Last updated:** 2026-08-13 · Hybrid multi-page site · specialist referral lab
 > **Status:** v1 built & client text content integrated. Hero background video added.
+> Site-wide styling consistency pass done (all interior pages now match the landing page:
+> unified gradient icon tiles, eyebrow + two-tone section heads, closing CTA bands).
 > Remaining work is mostly client-supplied assets (logo, real photos, PDF, endpoints).
 
 ---
@@ -95,6 +97,9 @@ Shared head / top bar + nav / footer + chatbot mount generated from `scripts/bui
 
 ## Phase 7 — Polish & QA
 - [~] Responsive (320 / 768 / 1280) — built responsive, needs device pass
+- [x] Site-wide styling consistency pass — every interior page brought up to the landing-page
+  look: unified magenta→navy gradient icon tiles, centered eyebrow + two-tone `.text-pink`
+  section heads, and the closing "Refer a case" CTA band added to faq/careers/contact/case-studies
 - [ ] Accessibility (contrast, keyboard, alt, ARIA) — full audit
 - [ ] Cross-browser (Chrome, Firefox, Safari, Edge)
 - [ ] SEO: unique title/description, canonical, one h1, sitemap, robots.txt, GA4
@@ -117,7 +122,14 @@ Shared head / top bar + nav / footer + chatbot mount generated from `scripts/bui
 - **Awaiting from client:** vector logo, domain, real photos/videos, full tests list,
   Patient Form PDF, Google Maps embed link, Reporting Portal URL, form endpoint,
   GA4 ID, trust numbers, testimonials, accreditations, case studies.
+- **QUESTION FOR CLIENT — Dr. Ashok Yadav leadership card:** the client's content doc
+  named only Dr. Arpan Gandhi, but the contract names two principals — likely the client
+  forgot to include Dr. Ashok Yadav's details. A **placeholder** leadership card for him
+  has been added to `about.html` and `physicians.html`. **Ask the client:** (a) should he
+  appear on the site? (b) confirmed name spelling & title/designation, (c) short bio
+  (expertise, years of experience, role). Fill or remove the placeholder once confirmed.
 - Raw 4K hero source (`video/`) must be **excluded** from the public repo / live upload —
   ship only `assets/hero.mp4` + `assets/hero-poster.jpg`.
 - Do **not** build/replace the third-party Reporting Portal — link out only.
-- Leadership on site = **Dr. Arpan Gandhi only** (client content dropped the second principal).
+- Leadership on site = Dr. Arpan Gandhi confirmed; **Dr. Ashok Yadav card added as a
+  PLACEHOLDER pending client confirmation** (see question above).

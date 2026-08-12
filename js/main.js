@@ -53,12 +53,18 @@
   /* ---------- Scroll reveal ---------- */
   const revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && revealEls.length) {
+    // Reveal on the way DOWN only. An element animates in as it enters from the
+    // bottom; once scrolled past (it exits via the top) we keep it revealed, so
+    // scrolling back up never re-triggers it. It only re-arms when it sits fully
+    // below the viewport again (top > 0) — off-screen, so there's no flicker —
+    // meaning a later downward scroll replays the animation.
     const io = new IntersectionObserver(
-      (entries, obs) => {
+      (entries) => {
         entries.forEach((e) => {
           if (e.isIntersecting) {
             e.target.classList.add("in");
-            obs.unobserve(e.target);
+          } else if (e.boundingClientRect.top > 0) {
+            e.target.classList.remove("in");
           }
         });
       },
