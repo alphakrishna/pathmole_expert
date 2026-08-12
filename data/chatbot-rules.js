@@ -4,19 +4,24 @@
    Each rule: { id, label, keywords[], answer, action }
    action types:
      { type: "link", href, text }   → shows a link button
-     { type: "contact" }            → shows Call / WhatsApp buttons
+     { type: "contact" }            → shows Call / WhatsApp / enquiry-form buttons
+     { type: "enquiry" }            → redirects to the contact enquiry form
      { type: "none" }               → answer only
    HARD RULE: never put a price anywhere. Pricing → { type: "contact" }.
+   HARD RULE: do not invent tests, turnaround times, accreditations, or numbers.
    ============================================================= */
 const CHATBOT_CONFIG = {
   greeting:
-    "Hi! I'm the PathMole assistant. I can help you find a test, learn about our services, or reach the lab. What do you need?",
+    "Hi! I'm the PathMole assistant. I can help you find a test, learn about our services, or reach the lab. You can also send an enquiry and our team will get back to you — what do you need?",
   phone: "+919899822375",
   whatsapp: "919899822375",
+  email: "pathmolelab@gmail.com",
+  // where the "Send an enquiry" redirect points (the contact form)
+  enquiryHref: "contact.html#enquiry",
   // quick-reply buttons shown first (by rule id)
-  menu: ["find-test", "services", "timings", "location", "reports", "pricing"],
+  menu: ["find-test", "services", "timings", "location", "pricing", "enquiry"],
   fallback:
-    "I'm not sure about that one. The quickest way is to message or call the lab directly — our team will help.",
+    "I'm not sure about that one. You can send us an enquiry or call the lab directly — our team will help.",
 };
 
 const CHATBOT_RULES = [
@@ -52,12 +57,36 @@ const CHATBOT_RULES = [
     action: { type: "link", href: "contact.html", text: "Contact & directions" },
   },
   {
+    id: "enquiry",
+    label: "Send an enquiry",
+    keywords: ["enquiry", "enquire", "inquiry", "inquire", "form", "submit", "message", "refer", "referral", "refer a case", "send", "get in touch"],
+    answer:
+      "You can send us an enquiry and our team will get back to you. It takes a minute:",
+    action: { type: "enquiry", text: "Open the enquiry form" },
+  },
+  {
     id: "reports",
     label: "Reports login",
     keywords: ["report", "reports", "login", "result", "results", "portal", "download"],
     answer:
       "Reports are available through our online reporting portal. Use the ‘Reports Login’ button at the top of the site.",
     action: { type: "none" },
+  },
+  {
+    id: "quality",
+    label: "Quality & safety",
+    keywords: ["quality", "accreditation", "accredited", "safety", "standard", "standards", "reliable", "accuracy"],
+    answer:
+      "Quality and patient safety sit at the centre of everything we do. Here's our quality framework:",
+    action: { type: "link", href: "quality.html", text: "Quality & patient safety" },
+  },
+  {
+    id: "turnaround",
+    label: "Report timing",
+    keywords: ["turnaround", "tat", "how long", "how many days", "report time", "ready", "when will", "duration", "delivery"],
+    answer:
+      "Turnaround depends on the specimen and the test — our team will give you an accurate timeline for your case. The fastest way is to ask us directly:",
+    action: { type: "contact" },
   },
   {
     id: "patient-form",

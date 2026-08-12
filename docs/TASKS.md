@@ -6,6 +6,10 @@
 > **Status:** v1 built & client text content integrated. Hero background video added.
 > Site-wide styling consistency pass done (all interior pages now match the landing page:
 > unified gradient icon tiles, eyebrow + two-tone section heads, closing CTA bands).
+> Latest pass: chatbot upgraded (new rules + enquiry-form redirect + chat history that
+> persists across page navigation and clears only on full reload; launcher restyled to the
+> PathMole brand tile), and the top bar + nav polished (gradient strip, frosted sticky nav
+> that shrinks on scroll, gradient link underline).
 > Remaining work is mostly client-supplied assets (logo, real photos, PDF, endpoints).
 
 ---
@@ -44,7 +48,10 @@ Shared head / top bar + nav / footer + chatbot mount generated from `scripts/bui
 - [x] Hero + dual CTA (`.cta-pair`), trust bar, section layouts
 - [x] Hero background **video** (muted/autoplay/loop) + navy scrim overlay + reduced-motion fallback
 - [x] Cards, buttons, forms, `.tick-list`
-- [x] Chatbot floating widget styles
+- [x] Chatbot floating widget styles + branded launcher (PathMole "P" logo tile with white
+      contrast ring so it never blends into navy backgrounds; live status dot, hover tooltip)
+- [x] Top bar + nav polish (gradient top strip, frosted/blurred sticky nav that shrinks on
+      scroll, two-tone gradient link underline)
 - [x] Responsive breakpoints + scroll-reveal
 
 ## Phase 3 — Site JS (`js/main.js`)
@@ -56,10 +63,17 @@ Shared head / top bar + nav / footer + chatbot mount generated from `scripts/bui
 
 ## Phase 4 — Chatbot (`js/chatbot.js` + `data/chatbot-rules.js`)
 - [x] Rules: find-test (→ tests.html), pricing (→ contact flow), info, fallback
+- [x] New rules: enquiry (→ `contact.html#enquiry` form redirect), quality (→ quality.html),
+      turnaround/TAT (→ contact — no invented times); enquiry added to the quick-reply menu
+- [x] Contact / pricing / fallback flows also surface a "Send enquiry" button (contact form)
 - [x] Floating mount on ALL pages
 - [x] Menu quick-replies + free-text keyword matching
 - [x] Pricing NEVER shows a price — renders Call / WhatsApp
 - [x] Keyboard accessible, auto-scroll, typing indicator
+- [x] Chat history persists across page navigation (sessionStorage) and clears only on a
+      full page reload (reload detected via Navigation Timing API); remembers open state
+- [x] Branded launcher = PathMole "P" logo tile (matches top logo/favicon) with a white
+      contrast ring so it stands out on any background
 
 ## Phase 4.5 — Tests Data (`data/tests.js`)
 - [x] Schema: slug, name, category, symptoms[], info — **NO price field**
