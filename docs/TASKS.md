@@ -2,7 +2,9 @@
 
 > Track progress here. Mark `[x]` when done. See **PLAN.md** for context and
 > **PATHMOLE-WEBSITE-GUIDE.md** for how to build each item.
-> **Last updated:** 2026-08-07 · Hybrid multi-page site · specialist referral lab
+> **Last updated:** 2026-08-13 · Hybrid multi-page site · specialist referral lab
+> **Status:** v1 built & client text content integrated. Hero background video added.
+> Remaining work is mostly client-supplied assets (logo, real photos, PDF, endpoints).
 
 ---
 
@@ -12,64 +14,63 @@
 - [x] Lock rules: no pricing anywhere · chatbot = test-finder · Reports Login at top
 - [x] Write PLAN.md, TASKS.md, INSTRUCTIONS.md, PATHMOLE-WEBSITE-GUIDE.md
 - [x] Draft client contract (CONTRACT.md + .docx)
-- [ ] **Receive client's styling reference website links** *(current blocker)*
-- [ ] Finalize palette/fonts in the GUIDE once references arrive
-- [ ] Collect client content (see PLAN.md §10 — Still needed)
+- [x] Palette/fonts locked from official letterhead (navy #232C8E · magenta #EC008C; Poppins/Inter) — design reference aiforia.com
+- [~] Collect client content — **text content received & integrated**; assets (logo, photos, PDF, tests list) still pending
 
-## Phase 1 — HTML Structure (build fresh per the GUIDE)
-Shared blocks first (head / top bar + nav / footer + chatbot mount), then each page.
-- [ ] `index.html` — lean funnel (hero + dual CTA → trust bar → services → why → case-studies teaser → final CTA)
-- [ ] `about.html` — About the Lab (founders, vision, quality philosophy)
-- [ ] `services.html` — Histopathology & Molecular Diagnostics
-- [ ] `tests.html` — test list + info (symptoms/indications, details) — **NO price**
-- [ ] `quality.html` — Quality & Accreditation (NABL/CAP goals, SOPs, TAT)
-- [ ] `physicians.html` — Physicians / Team
-- [ ] `publications.html` — Research & Publications
-- [ ] `gallery.html` — facility + equipment/machines + info
-- [ ] `videos.html` — YouTube section
-- [ ] `patients.html` — patient info + downloadable Patient Form (PDF)
-- [ ] `faq.html` — FAQ
-- [ ] `careers.html` — Careers
-- [ ] `contact.html` — enquiry form + Google Maps location(s) + details
-- [ ] `404.html` — custom 404
-- [ ] `case-studies/index.html` — listing (newest first)
-- [ ] `case-studies/[slug].html` — de-identified case-study template
+## Phase 1 — HTML Structure (built fresh per the GUIDE)
+Shared head / top bar + nav / footer + chatbot mount generated from `scripts/build_pages.py`.
+- [x] `index.html` — lean funnel (hero + dual CTA → what-we-do → why → philosophy → case-studies teaser → final CTA)
+- [x] `about.html` — About the Lab (story, quality, clinician-centric, technology, leadership)
+- [x] `services.html` — Histopathology · Cytopathology · Molecular Diagnostics
+- [x] `tests.html` — test list + info (symptoms/indications) — **NO price** (15 sample tests)
+- [x] `quality.html` — Quality & Patient Safety framework
+- [x] `physicians.html` — Our Team & For Clinicians
+- [x] `publications.html` — Research & References
+- [x] `gallery.html` — facility + equipment (placeholder images)
+- [x] `videos.html` — video section
+- [x] `patients.html` — patient info + downloadable Patient Form (PDF placeholder)
+- [x] `faq.html` — FAQ
+- [x] `careers.html` — Careers
+- [x] `contact.html` — enquiry form + Google Maps placeholder + details
+- [x] `404.html` — custom 404
+- [x] `case-studies/index.html` — listing + de-identified case-study template
 
 ## Phase 2 — Styling (`css/style.css`)
-- [ ] `:root` variables (colors, fonts, spacing, radius) — from client references
-- [ ] Base reset + typography
-- [ ] Top bar + nav + mobile menu (Reports Login at top)
-- [ ] Hero + dual CTA (`.cta-pair`), trust bar, section layouts
-- [ ] Cards, buttons, forms
-- [ ] Chatbot floating widget styles
-- [ ] Responsive breakpoints (320 / 768 / 1280) + scroll-reveal
+- [x] `:root` variables (colors, fonts, spacing, radius)
+- [x] Base reset + typography
+- [x] Top bar + nav + mobile menu (Reports Login at top)
+- [x] Hero + dual CTA (`.cta-pair`), trust bar, section layouts
+- [x] Hero background **video** (muted/autoplay/loop) + navy scrim overlay + reduced-motion fallback
+- [x] Cards, buttons, forms, `.tick-list`
+- [x] Chatbot floating widget styles
+- [x] Responsive breakpoints + scroll-reveal
 
 ## Phase 3 — Site JS (`js/main.js`)
-- [ ] Mobile menu toggle + active nav link
-- [ ] Smooth scroll / sticky nav behavior
-- [ ] Scroll-reveal (IntersectionObserver)
-- [ ] Enquiry form validation + submit (Formspree/Web3Forms — emails the lab)
-- [ ] Back-to-top + auto footer year
+- [x] Mobile menu toggle + active nav link
+- [x] Smooth scroll / sticky nav behavior
+- [x] Scroll-reveal (IntersectionObserver)
+- [~] Enquiry form validation done — **submit endpoint (Formspree/Web3Forms) not yet wired**
+- [x] Back-to-top + auto footer year
 
 ## Phase 4 — Chatbot (`js/chatbot.js` + `data/chatbot-rules.js`)
-- [ ] Rules: find-test (→ tests.html), pricing (→ contact flow), info, fallback
-- [ ] Floating mount on ALL pages
-- [ ] Menu quick-replies + free-text keyword matching
-- [ ] Pricing NEVER shows a price — renders Call / WhatsApp
-- [ ] Keyboard accessible, auto-scroll, typing indicator
+- [x] Rules: find-test (→ tests.html), pricing (→ contact flow), info, fallback
+- [x] Floating mount on ALL pages
+- [x] Menu quick-replies + free-text keyword matching
+- [x] Pricing NEVER shows a price — renders Call / WhatsApp
+- [x] Keyboard accessible, auto-scroll, typing indicator
 
 ## Phase 4.5 — Tests Data (`data/tests.js`)
-- [ ] Schema: slug, name, category, symptoms[], info — **NO price field**
-- [ ] Populate from client's tests list
-- [ ] "For more details, contact us at [PHONE] / WhatsApp" note + contact block
+- [x] Schema: slug, name, category, symptoms[], info — **NO price field**
+- [~] Populated with 15 sample tests — **awaiting client's full confirmed list**
+- [x] "For more details, contact us" note + contact block
 
 ## Phase 5 — Doctor Case-Study Newsletter (see PLAN.md §8)
 **Website side (v1):**
-- [ ] Case-studies listing + de-identified per-study template (summary, findings, teaching point, disclaimer)
-- [ ] Link from nav / homepage teaser
+- [x] Case-studies listing + de-identified per-study template (summary, findings, teaching point, disclaimer)
+- [x] Link from nav / homepage teaser
 **Email side (v1):**
 - [ ] Client buys domain (GoDaddy)
-- [ ] Zoho Mail free — 1 mailbox + aliases (one inbox, up to 4 addresses)
+- [ ] Zoho Mail free — 1 mailbox + aliases
 - [ ] Configure SPF / DKIM / DMARC DNS records
 - [ ] Email campaign tool (Zoho Campaigns or Brevo — free tier)
 - [ ] Import ~150 referring doctors from client CSV
@@ -84,21 +85,24 @@ Shared blocks first (head / top bar + nav / footer + chatbot mount), then each p
 - [ ] Auto-sync doctor list; optionally gate case studies behind OTP login
 
 ## Phase 6 — Content
-- [ ] Replace placeholder copy with client content (About, Services, Quality, Publications, Physicians)
-- [ ] Real logo + WebP images (facility + equipment)
-- [ ] Real contact details, hours, Google Maps embed, social links
+- [x] Replace placeholder copy with client content (Home, About, Services, Quality, Physicians, Patients)
+- [x] Hero background video optimized (HandBrake 4K→1080p, 3.5 MB) + poster frame → `assets/`
+- [ ] Real logo (vector) + real WebP images (facility + equipment)
+- [ ] Real contact details confirmed, hours, Google Maps embed, social links
 - [ ] Reporting Portal URL wired into top-of-site Reports Login
 - [ ] Patient Form PDF into `assets/`
+- [ ] Trust numbers, testimonials, accreditations (only if confirmed)
 
 ## Phase 7 — Polish & QA
-- [ ] Responsive (320 / 768 / 1280)
-- [ ] Accessibility (contrast, keyboard, alt, ARIA)
+- [~] Responsive (320 / 768 / 1280) — built responsive, needs device pass
+- [ ] Accessibility (contrast, keyboard, alt, ARIA) — full audit
 - [ ] Cross-browser (Chrome, Firefox, Safari, Edge)
 - [ ] SEO: unique title/description, canonical, one h1, sitemap, robots.txt, GA4
 - [ ] Performance (WebP, lazy-load, no console errors)
 - [ ] No `PLACEHOLDER` / `TODO` remaining
 
 ## Phase 8 — Deploy
+- [x] Preview deploy on GitHub Pages (staging)
 - [ ] ZIP → GoDaddy File Manager → `public_html/` → extract
 - [ ] Point domain, verify HTTPS
 - [ ] Submit sitemap in Search Console
@@ -106,7 +110,14 @@ Shared blocks first (head / top bar + nav / footer + chatbot mount), then each p
 
 ---
 
+### Legend
+`[x]` done · `[~]` partial / in progress · `[ ]` not started
+
 ### Notes / Blockers
-- **Blocked on:** client's styling reference links; client content (see PLAN.md §10).
+- **Awaiting from client:** vector logo, domain, real photos/videos, full tests list,
+  Patient Form PDF, Google Maps embed link, Reporting Portal URL, form endpoint,
+  GA4 ID, trust numbers, testimonials, accreditations, case studies.
+- Raw 4K hero source (`video/`) must be **excluded** from the public repo / live upload —
+  ship only `assets/hero.mp4` + `assets/hero-poster.jpg`.
 - Do **not** build/replace the third-party Reporting Portal — link out only.
-- Confirm second client's name/title (Dr. Ashok vs Mr. Ashok Yadav) before signing.
+- Leadership on site = **Dr. Arpan Gandhi only** (client content dropped the second principal).
