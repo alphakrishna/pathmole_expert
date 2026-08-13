@@ -1,10 +1,10 @@
 // Drives Edge via DevTools Protocol to render at a TRUE mobile viewport.
-// Usage: node scripts/cdp_shot.mjs <url> <width> <height> <outPng>
+// Usage: node scripts/cdp_shot.mjs <url> <width> <height> <outPng> [scrollY]
 import { spawn } from 'node:child_process';
 import { writeFileSync } from 'node:fs';
 import { setTimeout as sleep } from 'node:timers/promises';
 
-const [url, W, H, out] = process.argv.slice(2);
+const [url, W, H, out, scrollY] = process.argv.slice(2);
 const width = Number(W), height = Number(H);
 const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const PORT = 9200 + (width % 500);
@@ -47,6 +47,13 @@ try {
   await send('Emulation.setTouchEmulationEnabled', { enabled: true });
   await send('Page.navigate', { url });
   await sleep(3500); // let fonts/poster settle
+
+  if (scrollY) {
+    await send('Runtime.evaluate', {
+      expression: `window.scrollTo(0, ${Number(scrollY)}); window.dispatchEvent(new Event('scroll'));`,
+    });
+    await sleep(700); // let the reveal/scroll transitions play
+  }
 
   const measure = await send('Runtime.evaluate', {
     expression: `JSON.stringify({cw:document.documentElement.clientWidth,sw:document.documentElement.scrollWidth,ov:document.documentElement.scrollWidth-document.documentElement.clientWidth})`,

@@ -27,7 +27,11 @@
 Shared head / top bar + nav / footer + chatbot mount generated from `scripts/build_pages.py`.
 - [x] `index.html` — lean funnel (hero + dual CTA → what-we-do → why → philosophy → case-studies teaser → final CTA)
 - [x] `about.html` — About the Lab (story, quality, clinician-centric, technology, leadership)
-- [x] `services.html` — Histopathology · Cytopathology · Molecular Diagnostics
+- [x] `services.html` — Histopathology · Cytopathology · Molecular Diagnostics (hub; each section
+  now has a "Learn more →" redirect to a dedicated sub-page)
+- [x] Service sub-pages (one per landing "What we do" card): `histopathology.html`,
+  `cytopathology.html`, `molecular-diagnostics.html`, `diagnostic-support.html`
+  (breadcrumb Home / Services / X, SERVICES nav active; landing cards + footer link straight to them)
 - [x] `tests.html` — test list + info (symptoms/indications) — **NO price** (15 sample tests)
 - [x] `quality.html` — Quality & Patient Safety framework
 - [x] `physicians.html` — Our Team & For Clinicians
@@ -60,6 +64,8 @@ Shared head / top bar + nav / footer + chatbot mount generated from `scripts/bui
 - [x] Scroll-reveal (IntersectionObserver)
 - [~] Enquiry form validation done — **submit endpoint (Formspree/Web3Forms) not yet wired**
 - [x] Back-to-top + auto footer year
+- [x] Floating premium "Back" button (bottom-left navy pill, slides in past 300px scroll, goes to
+      previous page with `data-home` fallback) on every interior page — homepage excluded by design
 
 ## Phase 4 — Chatbot (`js/chatbot.js` + `data/chatbot-rules.js`)
 - [x] Rules: find-test (→ tests.html), pricing (→ contact flow), info, fallback

@@ -79,9 +79,9 @@ def footer_html(p):
         </div>
         <div class="footer-col">
           <h4>Services</h4>
-          <a href="{p}services.html">Histopathology</a>
-          <a href="{p}services.html">Cytopathology</a>
-          <a href="{p}services.html">Molecular Diagnostics</a>
+          <a href="{p}histopathology.html">Histopathology</a>
+          <a href="{p}cytopathology.html">Cytopathology</a>
+          <a href="{p}molecular-diagnostics.html">Molecular Diagnostics</a>
           <a href="{p}tests.html">Test List</a>
           <a href="{p}quality.html">Quality</a>
         </div>
@@ -113,6 +113,11 @@ def footer_html(p):
 
   <button id="back-to-top" class="back-to-top" aria-label="Back to top">
     <svg fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" /></svg>
+  </button>
+
+  <button id="back-page" class="back-page" data-home="{p}index.html" aria-label="Go back to the previous page">
+    <span class="back-page-ico" aria-hidden="true"><svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg></span>
+    <span>Back</span>
   </button>
 
   <div id="chatbot"></div>
@@ -168,6 +173,20 @@ def page(filename, title, desc, active, main, prefix="", extra_scripts=""):
 
 def phero(title, sub, active_label, prefix=""):
     crumb = '<div class="breadcrumb"><a href="{p}index.html">Home</a> / {t}</div>'.format(p=prefix, t=active_label)
+    return """  <header class="page-hero">
+    <div class="container page-hero-inner">
+      {crumb}
+      <h1>{title}</h1>
+      <p>{sub}</p>
+    </div>
+  </header>
+""".format(crumb=crumb, title=title, sub=sub)
+
+
+def subhero(title, sub, prefix=""):
+    """Page hero for a Services sub-page — breadcrumb Home / Services / <title>."""
+    crumb = ('<div class="breadcrumb"><a href="{p}index.html">Home</a> / '
+             '<a href="{p}services.html">Services</a> / {t}</div>').format(p=prefix, t=title)
     return """  <header class="page-hero">
     <div class="container page-hero-inner">
       {crumb}
@@ -254,11 +273,17 @@ PAGES.append(dict(filename="about.html", title="About the Lab", active="about",
   <section class="section section--soft">
     <div class="container">
       <div class="section-head reveal"><span class="eyebrow">Leadership</span><h2>Clinical &amp; laboratory leadership</h2></div>
-      <div class="grid" style="max-width:760px;margin:0 auto">
+      <div class="grid grid-2" style="max-width:900px;margin:0 auto">
         <article class="card reveal">
           <h3>Dr. Arpan Gandhi</h3>
           <p style="color:var(--accent);font-weight:600;margin-bottom:.6rem">Director &ndash; Laboratory Services | Diagnostic Medicine &amp; Laboratory Leadership</p>
           <p>With nearly three decades of experience in diagnostic medicine and laboratory services, Dr. Gandhi has worked across pathology, laboratory operations, quality, clinical collaboration, education and diagnostic leadership. His focus is on building laboratory systems that combine clinical expertise, operational excellence, technology and quality.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Dr. Ashok Yadav</h3>
+          <p style="color:var(--accent);font-weight:600;margin-bottom:.6rem">[PLACEHOLDER: designation / title &mdash; confirm with client]</p>
+          <p>[PLACEHOLDER: short professional bio &mdash; area of expertise, years of experience and role at the lab.]</p>
+          <p class="form-note" style="margin-top:.8rem">[TO CONFIRM: name &amp; honorific &mdash; the contract lists &ldquo;Dr. Ashok&rdquo; while the lab&rsquo;s own material says &ldquo;Mr. Ashok Yadav&rdquo;. Please confirm the correct name, title and bio.]</p>
         </article>
       </div>
     </div>
@@ -275,6 +300,7 @@ PAGES.append(dict(filename="services.html", title="Services", active="services",
         <span class="eyebrow">Histopathology</span>
         <h2>Seeing disease through tissue</h2>
         <p>Histopathology remains one of the most important pillars of diagnostic medicine. Examination of tissue under the microscope allows the pathologist to identify disease patterns, establish diagnoses and provide information that can influence treatment. Our histopathology service is designed to provide accurate, reproducible and clinically relevant tissue diagnosis.</p>
+        <a href="histopathology.html" class="btn-ghost" style="margin-top:1rem">Explore histopathology &rarr;</a>
       </div>
       <div class="grid grid-3" style="margin-top:1.6rem">
         <article class="card reveal"><ul class="tick-list"><li>Routine biopsy examination</li><li>Small and large surgical specimens</li><li>Gastrointestinal biopsies</li><li>Gynecological specimens</li></ul></article>
@@ -291,11 +317,13 @@ PAGES.append(dict(filename="services.html", title="Services", active="services",
         <span class="eyebrow">Cytopathology</span>
         <h2>Diagnosis at the level of cells</h2>
         <p>Evaluation of cells from various body sites and fluids for the detection and diagnosis of disease &mdash; a valuable, minimally invasive complement to tissue histopathology.</p>
+        <a href="cytopathology.html" class="btn-ghost" style="margin-top:1rem">Explore cytopathology &rarr;</a>
       </div>
       <div class="reveal">
         <span class="eyebrow">Specialised diagnostic support</span>
         <h2>Clinician-focused interpretation</h2>
         <p>Consultation and correlation of laboratory findings with clinical information, so results are meaningful in the clinical context &mdash; not just numbers on a report.</p>
+        <a href="diagnostic-support.html" class="btn-ghost" style="margin-top:1rem">Explore diagnostic support &rarr;</a>
       </div>
     </div>
   </section>
@@ -311,7 +339,140 @@ PAGES.append(dict(filename="services.html", title="Services", active="services",
         <article class="card reveal"><h3>Molecular diagnostic applications</h3><ul class="tick-list"><li>Infectious disease diagnosis</li><li>Detection of bacterial and viral pathogens</li><li>Identification of specific genetic targets</li><li>Mutation and molecular marker analysis</li><li>Oncology-related molecular testing</li><li>Targeted PCR-based investigations</li><li>Other specialised molecular assays</li></ul></article>
         <article class="card reveal"><h3>PCR-based diagnostics</h3><p>Polymerase Chain Reaction (PCR) is one of the most important technologies in modern molecular diagnostics. It allows specific regions of DNA or RNA to be amplified and detected, making it possible to identify targets that may be difficult or impossible to detect using conventional methods alone.</p><p style="margin-top:.8rem;font-style:italic;color:var(--ink-400)">Molecular diagnostics is powerful &mdash; its value depends on doing it correctly, with rigorous control at every stage.</p></article>
       </div>
-      <div class="center" style="margin-top:2.5rem"><a href="tests.html" class="btn-secondary">Browse the test list</a></div>
+      <div class="center" style="margin-top:2.5rem;display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap"><a href="molecular-diagnostics.html" class="btn-secondary">Explore molecular diagnostics &rarr;</a><a href="tests.html" class="btn-ghost">Browse the test list</a></div>
+    </div>
+  </section>
+""" + cta_band()))
+
+# --- SERVICE SUB-PAGES (dedicated page per "What we do" card) ---
+
+# HISTOPATHOLOGY
+PAGES.append(dict(filename="histopathology.html", title="Histopathology", active="services",
+    desc="Histopathology at PathMole Expert Lab — detailed microscopic examination of tissue for accurate, reproducible and clinically relevant diagnosis.",
+    main=subhero("Histopathology", "Detailed microscopic examination of tissue &mdash; accurate, reproducible and clinically relevant diagnosis.") + """
+  <section class="section">
+    <div class="container">
+      <div class="reveal" style="max-width:820px">
+        <span class="eyebrow">Seeing disease through tissue</span>
+        <h2>One of the <span class="text-pink">pillars of diagnosis</span></h2>
+        <p>Histopathology remains one of the most important pillars of diagnostic medicine. Examination of tissue under the microscope allows the pathologist to identify disease patterns, establish diagnoses and provide information that can influence treatment. Our histopathology service is designed to provide accurate, reproducible and clinically relevant tissue diagnosis.</p>
+      </div>
+      <div class="grid grid-3" style="margin-top:1.6rem">
+        <article class="card reveal">
+          <div class="card-icon"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"/></svg></div>
+          <h3>Specimens</h3>
+          <ul class="tick-list"><li>Routine biopsy examination</li><li>Small and large surgical specimens</li><li>Gastrointestinal biopsies</li><li>Gynecological specimens</li></ul>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></div>
+          <h3>Conditions</h3>
+          <ul class="tick-list"><li>Head and neck specimens</li><li>Skin and soft tissue specimens</li><li>Inflammatory and infectious conditions</li><li>Benign and malignant lesions</li></ul>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg></div>
+          <h3>Techniques</h3>
+          <ul class="tick-list"><li>Histochemical stains</li><li>Immunohistochemistry, where indicated</li><li>Specialised pathology consultation</li></ul>
+        </article>
+      </div>
+      <div class="notice reveal" style="margin-top:1.8rem"><strong>From specimen to diagnosis:</strong> Specimen Collection &rarr; Accessioning &rarr; Gross Examination &rarr; Tissue Processing &rarr; Embedding &rarr; Sectioning &rarr; Staining &rarr; Microscopy &rarr; Interpretation &rarr; Reporting. Quality at every stage contributes to the quality of the final diagnosis.</div>
+      <div class="center" style="margin-top:2rem"><a href="services.html" class="btn-ghost">&larr; Back to all services</a></div>
+    </div>
+  </section>
+""" + cta_band()))
+
+# CYTOPATHOLOGY
+PAGES.append(dict(filename="cytopathology.html", title="Cytopathology", active="services",
+    desc="Cytopathology at PathMole Expert Lab — evaluation of cells from body sites and fluids, a minimally invasive complement to tissue histopathology.",
+    main=subhero("Cytopathology", "Evaluation of cells from various body sites and fluids &mdash; a minimally invasive complement to tissue histopathology.") + """
+  <section class="section">
+    <div class="container">
+      <div class="reveal" style="max-width:820px">
+        <span class="eyebrow">Diagnosis at the level of cells</span>
+        <h2>A minimally invasive <span class="text-pink">complement to tissue</span></h2>
+        <p>Evaluation of cells from various body sites and fluids for the detection and diagnosis of disease &mdash; a valuable, minimally invasive complement to tissue histopathology. When cellular material can answer the clinical question, cytology offers a gentler route to a reliable diagnosis.</p>
+      </div>
+      <div class="grid grid-3" style="margin-top:1.6rem">
+        <article class="card reveal">
+          <div class="card-icon"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 100 18 9 9 0 000-18zm0 5a4 4 0 100 8 4 4 0 000-8z"/></svg></div>
+          <h3>Cells &amp; fluids</h3>
+          <p>Assessment of cells collected from body sites and fluids for the detection and diagnosis of disease.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+          <h3>Minimally invasive</h3>
+          <p>A gentler sampling route that can answer the clinical question with less discomfort for the patient.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+          <h3>Clinically correlated</h3>
+          <p>Findings are interpreted alongside histopathology and clinical information so results are meaningful in context.</p>
+        </article>
+      </div>
+      <div class="notice reveal" style="margin-top:1.8rem">For specimen requirements and availability, please <a href="contact.html">contact the lab</a> &mdash; our team will guide you on collection, fixation and transport.</div>
+      <div class="center" style="margin-top:2rem"><a href="services.html" class="btn-ghost">&larr; Back to all services</a></div>
+    </div>
+  </section>
+""" + cta_band()))
+
+# MOLECULAR DIAGNOSTICS
+PAGES.append(dict(filename="molecular-diagnostics.html", title="Molecular Diagnostics", active="services",
+    desc="Molecular Diagnostics at PathMole Expert Lab — DNA- and RNA-based testing for rapid, specific and clinically relevant molecular results.",
+    main=subhero("Molecular Diagnostics", "DNA- and RNA-based testing &mdash; rapid, specific and clinically relevant molecular results.") + """
+  <section class="section">
+    <div class="container">
+      <div class="reveal" style="max-width:820px">
+        <span class="eyebrow">Molecular biology &amp; molecular diagnostics</span>
+        <h2>Looking beyond <span class="text-pink">what the microscope can see</span></h2>
+        <p>Modern diagnostic medicine increasingly depends on understanding disease at the molecular level. Molecular diagnostics examines genetic material such as DNA and RNA to detect specific pathogens, genetic alterations and other molecular targets. Our molecular biology laboratory is designed to support the growing need for rapid, specific and clinically relevant molecular testing.</p>
+      </div>
+      <div class="grid grid-2" style="margin-top:1.6rem">
+        <article class="card reveal">
+          <div class="card-icon"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8 3c2 3 2 5 0 8s-2 5 0 8m8-16c-2 3-2 5 0 8s2 5 0 8M7 7h10M7 17h10"/></svg></div>
+          <h3>Molecular diagnostic applications</h3>
+          <ul class="tick-list"><li>Infectious disease diagnosis</li><li>Detection of bacterial and viral pathogens</li><li>Identification of specific genetic targets</li><li>Mutation and molecular marker analysis</li><li>Oncology-related molecular testing</li><li>Targeted PCR-based investigations</li><li>Other specialised molecular assays</li></ul>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z"/></svg></div>
+          <h3>PCR-based diagnostics</h3>
+          <p>Polymerase Chain Reaction (PCR) is one of the most important technologies in modern molecular diagnostics. It allows specific regions of DNA or RNA to be amplified and detected, making it possible to identify targets that may be difficult or impossible to detect using conventional methods alone.</p>
+          <p style="margin-top:.8rem;font-style:italic;color:var(--ink-400)">Molecular diagnostics is powerful &mdash; its value depends on doing it correctly, with rigorous control at every stage.</p>
+        </article>
+      </div>
+      <div class="center" style="margin-top:2.5rem;display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap"><a href="tests.html" class="btn-secondary">Browse the test list</a><a href="services.html" class="btn-ghost">&larr; Back to all services</a></div>
+    </div>
+  </section>
+""" + cta_band()))
+
+# SPECIALISED DIAGNOSTIC SUPPORT
+PAGES.append(dict(filename="diagnostic-support.html", title="Specialised Diagnostic Support", active="services",
+    desc="Specialised Diagnostic Support at PathMole Expert Lab — clinician-focused interpretation, consultation and correlation of laboratory findings.",
+    main=subhero("Specialised Diagnostic Support", "Clinician-focused interpretation, consultation and correlation &mdash; results that mean something in context.") + """
+  <section class="section">
+    <div class="container">
+      <div class="reveal" style="max-width:820px">
+        <span class="eyebrow">Clinician-focused interpretation</span>
+        <h2>Reports that <span class="text-pink">mean something</span></h2>
+        <p>Consultation and correlation of laboratory findings with clinical information, so results are meaningful in the clinical context &mdash; not just numbers on a report. We aim to work as an extension of the clinical team, providing results that are accurate, timely, understandable and clinically relevant.</p>
+      </div>
+      <div class="grid grid-3" style="margin-top:1.6rem">
+        <article class="card reveal">
+          <div class="card-icon"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <h3>Clinically relevant reports</h3>
+          <p>Reports structured to communicate the information most important for decision-making.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg></div>
+          <h3>Pathologist consultation</h3>
+          <p>Direct professional communication when a case requires discussion or clarification.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/></svg></div>
+          <h3>Integrated diagnostics</h3>
+          <p>Histopathology and molecular findings that complement each other when clinically indicated.</p>
+        </article>
+      </div>
+      <p class="center" style="margin-top:1.6rem;font-style:italic;color:var(--ink-400)">When in doubt about the right test or specimen, speak to us before sending the sample.</p>
+      <div class="center" style="margin-top:1.4rem"><a href="services.html" class="btn-ghost">&larr; Back to all services</a></div>
     </div>
   </section>
 """ + cta_band()))
@@ -426,11 +587,17 @@ PAGES.append(dict(filename="physicians.html", title="Physicians", active="",
       <h2>Experience. Expertise. Commitment.</h2>
       <p>A diagnostic laboratory is only as strong as the people behind it. Our team brings together professionals with experience in pathology, laboratory operations, technical services, quality management and molecular diagnostics. We build a culture where people are encouraged to follow evidence-based practices, ask questions, communicate openly, learn continuously, take ownership of quality, and put patient safety first.</p>
     </div>
-    <div class="grid" style="max-width:760px;margin:1.6rem auto 0">
+    <div class="grid grid-2" style="max-width:900px;margin:1.6rem auto 0">
       <article class="card reveal">
         <h3>Dr. Arpan Gandhi</h3>
         <p style="color:var(--accent);font-weight:600;margin-bottom:.6rem">Director &ndash; Laboratory Services | Diagnostic Medicine &amp; Laboratory Leadership</p>
         <p>With nearly three decades of experience in diagnostic medicine and laboratory services, Dr. Gandhi has worked across pathology, laboratory operations, quality, clinical collaboration, education and diagnostic leadership. His focus is on building laboratory systems that combine clinical expertise, operational excellence, technology and quality.</p>
+      </article>
+      <article class="card reveal">
+        <h3>Dr. Ashok Yadav</h3>
+        <p style="color:var(--accent);font-weight:600;margin-bottom:.6rem">[PLACEHOLDER: designation / title &mdash; confirm with client]</p>
+        <p>[PLACEHOLDER: short professional bio &mdash; area of expertise, years of experience and role at the lab.]</p>
+        <p class="form-note" style="margin-top:.8rem">[TO CONFIRM: name &amp; honorific &mdash; the contract lists &ldquo;Dr. Ashok&rdquo; while the lab&rsquo;s own material says &ldquo;Mr. Ashok Yadav&rdquo;. Please confirm the correct name, title and bio.]</p>
       </article>
     </div>
   </div></section>

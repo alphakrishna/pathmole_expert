@@ -13,6 +13,8 @@
     if (nav) nav.classList.toggle("scrolled", window.scrollY > 8);
     const btt = document.getElementById("back-to-top");
     if (btt) btt.classList.toggle("show", window.scrollY > 400);
+    const bp = document.getElementById("back-page");
+    if (bp) bp.classList.toggle("show", window.scrollY > 300);
   };
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
@@ -39,6 +41,17 @@
     backTop.addEventListener("click", () =>
       window.scrollTo({ top: 0, behavior: "smooth" })
     );
+  }
+
+  /* ---------- Back (previous page) ---------- */
+  const backPage = document.getElementById("back-page");
+  if (backPage) {
+    // Use browser history when there is one, otherwise fall back to the
+    // page's declared parent (data-home) so the button never dead-ends.
+    backPage.addEventListener("click", () => {
+      if (history.length > 1) history.back();
+      else window.location.href = backPage.getAttribute("data-home") || "index.html";
+    });
   }
 
   /* ---------- News strip dismiss ---------- */

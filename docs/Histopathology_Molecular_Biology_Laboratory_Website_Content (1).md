@@ -1,0 +1,214 @@
+# HOME PAGE
+Histopathology & Molecular Biology Laboratory
+Precision in Diagnosis. Confidence in Care.
+Advanced Histopathology and Molecular Diagnostics under one roof.
+Accurate diagnosis is the foundation of effective healthcare. Our laboratory brings together the expertise of histopathology, cytopathology and molecular biology to provide reliable, timely and clinically meaningful diagnostic information.
+From routine tissue examination to advanced molecular testing, we combine scientific expertise, quality-focused laboratory processes and modern technology to support clinicians in making informed decisions for their patients.
+What We Do
+## Histopathology
+Detailed microscopic examination of tissue specimens to identify disease, establish diagnosis and support treatment planning.
+## Cytopathology
+Evaluation of cells from various body sites and fluids for the detection and diagnosis of disease.
+## Molecular Diagnostics
+DNA- and RNA-based testing using molecular techniques to identify infectious agents, genetic alterations and clinically relevant molecular markers.
+## Specialised Diagnostic Support
+Clinician-focused interpretation, consultation and correlation of laboratory findings with clinical information.
+## Why Choose Us?
+- Experienced pathology and laboratory professionals
+• Strong emphasis on accuracy and quality
+• Standardised pre-analytical, analytical and post-analytical processes
+• Histopathology and molecular diagnostics under one roof
+• Clinician-oriented reporting
+• Focus on timely turnaround
+• Continuous quality improvement
+• Technology-supported diagnostic workflows
+## Our Philosophy
+Every specimen tells a story. Every report can influence a decision.
+We believe laboratory medicine is not simply about processing samples. It is about providing information that clinicians can trust and patients can benefit from.
+Accurate. Timely. Clinically Relevant.
+
+# ABOUT US
+Where Science Meets Clinical Decision-Making
+Our Histopathology & Molecular Biology Laboratory has been established with a simple objective: to provide dependable diagnostic information that helps clinicians make better decisions.
+The laboratory brings together two complementary areas of modern diagnostic medicine.
+Histopathology allows us to understand disease through the examination of tissues and cells.
+Molecular diagnostics allows us to look deeper—at DNA, RNA, microorganisms and molecular alterations that may not be visible through conventional microscopy alone.
+Together, these disciplines provide a more comprehensive approach to diagnosis.
+Built Around Quality
+Our laboratory processes are designed around the principles of:
+Accuracy | Quality | Traceability | Timeliness | Patient Safety
+We recognise that laboratory quality begins long before a specimen reaches the microscope or analyser. Proper specimen collection, identification, transportation, processing, testing, interpretation and reporting are all essential components of a reliable diagnostic service.
+Clinician-Centric Diagnostics
+A laboratory report should not merely present numbers or microscopic findings. It should provide information that is meaningful in the clinical context.
+Our approach therefore emphasises:
+• Clear and structured reporting
+• Appropriate clinical correlation
+• Communication with treating clinicians when required
+• Defined turnaround times
+• Appropriate test selection
+• Quality assurance at every stage
+Looking Ahead
+Healthcare is moving towards increasingly precise and personalised diagnosis. Our laboratory is being developed with this future in mind—with the integration of modern laboratory technology, molecular diagnostics, digital workflows and continuous professional learning.
+Our goal is not simply to perform more tests. Our goal is to provide better diagnostic information.
+
+# HISTOPATHOLOGY SERVICES
+Seeing Disease Through Tissue
+Histopathology remains one of the most important pillars of diagnostic medicine. Examination of tissue under the microscope allows the pathologist to identify disease patterns, establish diagnoses and provide information that can influence treatment.
+Our histopathology service is designed to provide accurate, reproducible and clinically relevant tissue diagnosis.
+## Our Histopathology Services
+- Routine biopsy examination
+• Small and large surgical specimens
+• Gastrointestinal biopsies
+• Gynecological specimens
+• Head and neck specimens
+• Skin and soft tissue specimens
+• Inflammatory and infectious conditions
+• Benign and malignant lesions
+• Histochemical stains
+• Immunohistochemistry, where indicated
+• Specialised pathology consultation
+From Specimen to Diagnosis
+Specimen Collection → Accessioning → Gross Examination → Tissue Processing → Embedding → Sectioning → Staining → Microscopy → Interpretation → Reporting
+Quality at every stage contributes to the quality of the final diagnosis.
+Our Approach
+We combine conventional morphological assessment with appropriate ancillary techniques when required.
+Where necessary, histopathological findings can be integrated with clinical, radiological and molecular information to provide a more complete diagnostic picture.
+The microscope remains central. Technology makes the diagnosis stronger.
+
+# MOLECULAR BIOLOGY & MOLECULAR DIAGNOSTICS
+Looking Beyond What the Microscope Can See
+Modern diagnostic medicine increasingly depends on understanding disease at the molecular level.
+Molecular diagnostics examines genetic material such as DNA and RNA to detect specific pathogens, genetic alterations and other molecular targets.
+Our molecular biology laboratory is designed to support the growing need for rapid, specific and clinically relevant molecular testing.
+## Molecular Diagnostic Applications
+Depending on the clinical requirement, molecular testing may support:
+• Infectious disease diagnosis
+• Detection of bacterial and viral pathogens
+• Identification of specific genetic targets
+• Mutation and molecular marker analysis
+• Oncology-related molecular testing
+• Targeted PCR-based investigations
+• Other specialised molecular assays
+PCR-Based Diagnostics
+Polymerase Chain Reaction (PCR) is one of the most important technologies in modern molecular diagnostics.
+It allows specific regions of DNA or RNA to be amplified and detected, making it possible to identify targets that may be difficult or impossible to detect using conventional methods alone.
+Quality Matters in Molecular Testing
+Molecular diagnostics requires rigorous control at every stage—from specimen collection and nucleic acid extraction to amplification, detection and interpretation.
+Our workflow therefore places strong emphasis on:
+• Specimen integrity
+• Contamination prevention
+• Appropriate controls
+• Standardised procedures
+• Result verification
+• Documentation and traceability
+• Quality assurance
+Molecular diagnostics is powerful. Its value depends on doing it correctly.
+
+# FOR CLINICIANS
+Diagnostics That Support Clinical Decisions
+We understand that clinicians need more than a laboratory result.
+They need results that are accurate, timely, understandable and clinically relevant.
+Our laboratory aims to work as an extension of the clinical team by providing dependable diagnostic information and professional communication whenever required.
+What Clinicians Can Expect
+## Reliable Testing
+Standardised laboratory processes designed to maintain consistency and quality.
+## Defined Turnaround Times
+Clear expectations regarding reporting timelines.
+## Clinically Relevant Reports
+Reports structured to communicate the information most important for clinical decision-making.
+## Pathologist Consultation
+Direct professional communication when a case requires discussion or clarification.
+## Integrated Diagnostics
+Histopathology and molecular findings can complement each other when clinically indicated.
+Specimen Submission
+Clinicians and healthcare institutions can contact our laboratory for information regarding:
+• Test availability
+• Specimen requirements
+• Fixation and transport
+• Sample volume
+• Turnaround times
+• Test selection
+• Special requirements
+When in doubt about the right test or specimen, speak to us before sending the sample.
+
+# QUALITY & PATIENT SAFETY
+Quality Is Not a Department. It Is a Culture.
+In laboratory medicine, even a technically perfect test cannot compensate for a poorly collected, identified or transported specimen.
+That is why we approach quality across the entire diagnostic pathway.
+Our Quality Framework
+## Pre-Analytical Quality
+Correct patient identification, specimen collection, labelling, fixation, transportation and accessioning.
+## Analytical Quality
+Validated procedures, appropriate controls, standardised techniques and trained personnel.
+## Post-Analytical Quality
+Result verification, structured reporting, timely communication and appropriate documentation.
+## Our Commitment
+- Reducing pre-analytical errors
+• Maintaining specimen traceability
+• Monitoring turnaround time
+• Ensuring reproducibility
+• Monitoring quality indicators
+• Learning from errors and near misses
+• Continuing staff education
+• Implementing corrective and preventive actions
+Quality Beyond Compliance
+Accreditation and standards are important. But true laboratory quality goes beyond compliance.
+Quality means doing the right thing consistently—even when nobody is watching.
+
+# TECHNOLOGY & INNOVATION
+Modern Tools. Experienced Minds.
+Technology is transforming diagnostic medicine.
+Our laboratory is being developed with an emphasis on appropriate technology that improves accuracy, efficiency, traceability and diagnostic capability.
+Our technology ecosystem may include:
+• Modern histopathology processing systems
+• Automated and semi-automated laboratory equipment
+• Advanced staining techniques
+• Molecular amplification platforms
+• PCR-based diagnostic technologies
+• Digital documentation and laboratory information systems
+• Data-driven quality monitoring
+• Future-ready digital pathology capabilities
+Technology Is an Enabler
+We believe technology should support—not replace—professional expertise.
+The strongest diagnostic systems combine:
+Experienced Professionals + Reliable Processes + Appropriate Technology + Quality Culture
+That is the approach we are building into our laboratory.
+
+# OUR TEAM
+Experience. Expertise. Commitment.
+A diagnostic laboratory is only as strong as the people behind it.
+Our team brings together professionals with experience in pathology, laboratory operations, technical services, quality management and molecular diagnostics.
+We believe in building a culture where people are encouraged to:
+• Follow evidence-based practices
+• Ask questions
+• Communicate openly
+• Learn continuously
+• Take ownership of quality
+• Put patient safety first
+Clinical & Laboratory Leadership
+Dr. Arpan Gandhi
+Director – Laboratory Services | Diagnostic Medicine & Laboratory Leadership
+With nearly three decades of experience in diagnostic medicine and laboratory services, Dr. Gandhi has worked across pathology, laboratory operations, quality, clinical collaboration, education and diagnostic leadership.
+His focus is on building laboratory systems that combine clinical expertise, operational excellence, technology and quality.
+Our Commitment to Learning
+Diagnostics is constantly evolving.
+Our laboratory therefore places emphasis on continuous professional development, training, knowledge sharing and keeping pace with advances in histopathology and molecular diagnostics.
+
+# CONTACT US
+Let’s Connect
+For test enquiries, specimen submission, clinician consultations, institutional collaborations or other laboratory-related queries, please get in touch with us.
+Laboratory
+Histopathology & Molecular Biology Laboratory
+## Address:
+[Complete Laboratory Address]
+## Phone:
+[Phone Number]
+## Email:
+[Email Address]
+## Laboratory Hours:
+[Days & Timings]
+For Clinicians
+For queries regarding specimen requirements, test selection, molecular testing or complex cases, please contact our laboratory team.
+For Patients
+Please carry your prescription/request form and relevant previous reports whenever applicable.
+Accurate diagnosis begins with the right specimen and the right test.
