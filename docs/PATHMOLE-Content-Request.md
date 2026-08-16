@@ -248,12 +248,17 @@ bio.**
 
 ------------------------------------------------------------------------
 
-**➜ STILL NEEDED.** The second principal is **not mentioned anywhere in
-the content document** --- only Dr. Arpan Gandhi is. A placeholder
+**➜ STILL NEEDED — UPDATE (2026-08-14): confirmed he appears.** The
+second principal was **not mentioned in the content document**, but you
+have now confirmed he **should appear** on the site. A placeholder
 leadership card is currently on the site (About + Physicians). Please
-confirm the correct **name & honorific** ("Dr. Ashok" vs "Mr. Ashok
-Yadav"), **title**, **qualifications** and a **short bio** --- or tell us
-to remove the card.
+send the correct **name & honorific** ("Dr. Ashok" vs "Mr. Ashok
+Yadav"), **title**, **qualifications**, a **short bio**, and a **photo**
+so we can replace the placeholder.
+
+**▸ Leadership photos (2026-08-14).** Please send professional headshot
+photos of **Dr. Arpan Gandhi** and **Dr. Ashok Yadav** (image files, one
+per person) for the leadership cards on About + Physicians.
 
 ------------------------------------------------------------------------
 
@@ -343,6 +348,10 @@ the site's 15 tests are still samples awaiting your final list.
 **5. Case Studies**
 
 *File: case-studies/index.html \| De-identified teaching cases*
+
+> **CHANGE (2026-08-14):** Case Studies and Research & References (section 6) are being
+> **combined into a single page** ("Case Studies & Research"). Please still send the two
+> content sets below --- they will simply live on one page.
 
 **▸ Case studies to publish. For each: a title, the teaching
 point/summary, discipline (Histo/Molecular/IHC), and month/year.**
@@ -623,6 +632,91 @@ integrated into the site):**
 
 *(These map to existing site sections and are already live. Add anything
 further here.)*
+
+------------------------------------------------------------------------
+
+**NEW SECTIONS — requested 14 Aug 2026**
+
+*These are the changes you asked for on 14 Aug. For each, we need the
+content (and, where noted, the form) from you.*
+
+**15. "Learn about this" explainers — one per landing card**
+
+*Files: histopathology.html · cytopathology.html ·
+molecular-diagnostics.html · diagnostic-support.html*
+
+Each of the four "What We Do" cards will get a general, easy-to-understand
+explainer aimed at a non-specialist reader — a short "what is it / why it
+matters / what to expect" written in plain language, sitting alongside the
+existing clinician-facing detail.
+
+**▸ We will draft this plain-language copy for each of the four topics.
+Please review and approve (or edit).** Tell us anything specific you want
+included or avoided. No prices, no invented tests/claims.
+
+------------------------------------------------------------------------
+
+**➜ STILL NEEDED (your approval of our draft).**
+
+------------------------------------------------------------------------
+
+**16. Training Institute**
+
+*New page + link in the main nav and Services hub*
+
+A dedicated page for the lab's training institute.
+
+**▸ Send the Training Institute content** (overview, courses/programs,
+who it's for, eligibility, duration, etc.).
+
+**▸ Send the Google Form** (the requirements / registration list). Tell
+us whether you'd like us to **embed your Google Form** directly on the
+page, or **build a matching native form** on the site that emails you the
+responses.
+
+------------------------------------------------------------------------
+
+**➜ STILL NEEDED (content + Google Form + form preference).**
+
+------------------------------------------------------------------------
+
+**17. Partner With Us**
+
+*New page + link in the main nav / footer*
+
+A page describing partnership/collaboration opportunities, with a form to
+fill in.
+
+**▸ Send the Partner-With-Us content** (who you partner with, what you
+offer, how it works).
+
+**▸ Form fields:** confirm what the partnership form should ask (e.g.
+name, organisation, role, phone, email, message) — or send a Google Form
+to embed, as above.
+
+------------------------------------------------------------------------
+
+**➜ STILL NEEDED (content + form fields / Google Form).**
+
+------------------------------------------------------------------------
+
+**18. Illustrations & stock imagery**
+
+*Applies across the whole site*
+
+We will add illustrations and licensed stock images wherever the site
+needs visuals (section artwork, the per-topic explainers, and the empty
+placeholder tiles), using royalty-free / licensed sources and the brand
+palette. These are **interim** visuals — they'll be swapped for your real
+lab photos as soon as you send them (see Gallery, section 9).
+
+**▸ Any preference on style (photographic vs illustrated), or anything
+you specifically want shown or avoided?** Optional.
+
+------------------------------------------------------------------------
+
+**➜ NO ACTION NEEDED unless you have a preference. Real lab photos (when
+sent) will replace the stock imagery.**
 
 ------------------------------------------------------------------------
 

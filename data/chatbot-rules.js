@@ -97,10 +97,18 @@ const CHATBOT_RULES = [
   },
   {
     id: "case-studies",
-    label: "Case studies",
-    keywords: ["case", "case study", "case studies", "newsletter", "blog"],
-    answer: "We publish de-identified case studies for referring doctors. Have a look:",
-    action: { type: "link", href: "case-studies/", text: "View case studies" },
+    label: "Case studies & research",
+    keywords: ["case", "case study", "case studies", "newsletter", "blog", "research", "publication", "publications", "guideline", "guidelines", "reference", "references"],
+    answer: "We publish de-identified case studies for referring doctors, alongside the classifications and guidelines our reporting is built on. Have a look:",
+    action: { type: "link", href: "case-studies/", text: "Case studies & research" },
+  },
+  {
+    id: "partner",
+    label: "Partner with us",
+    keywords: ["partner", "partnership", "collaborate", "collaboration", "outsource", "outsourcing", "referral partner", "tie up", "tie-up", "associate", "institution", "hospital tie", "b2b"],
+    answer:
+      "We partner with hospitals, clinics, doctors, laboratories and healthcare institutions for Histopathology & Molecular Diagnostic services. Tell us about your requirement and our team will get in touch:",
+    action: { type: "link", href: "partner.html", text: "Partner with us" },
   },
   {
     id: "careers",

@@ -11,6 +11,65 @@
 > PathMole brand tile), and the top bar + nav polished (gradient strip, frosted sticky nav
 > that shrinks on scroll, gradient link underline).
 > Remaining work is mostly client-supplied assets (logo, real photos, PDF, endpoints).
+>
+> **NEW SCOPE (client change requests, 2026-08-14):** see the dedicated section below —
+> per-topic educational "learn" pages, a Training Institute service + form, merging
+> Case Studies with Research into one page, a new "Partner With Us" page + form,
+> illustrations/stock imagery site-wide, and real leadership photos.
+
+---
+
+## Client Change Requests — 2026-08-14 (NEW SCOPE)
+> Requested by the client on 14 Aug 2026. Content + assets for the new pages/forms will be
+> supplied by the client (tracked in **PATHMOLE-Content-Request.md**). No invented tests,
+> claims, prices or accreditations — bracketed placeholders until confirmed.
+
+- [~] **Educational "learn about this" content lives on the LANDING CARDS — service pages stay LEAN.**
+  DECISION (2026-08-16, supersedes the original "add explainers to each sub-page"): the beginner +
+  intermediate "what is it" guide belongs on the EXPANDED landing "What We Do" cards. The service
+  sub-pages must NOT re-explain the topics — each gets a SHORT "what it is" line then "what we
+  offer", with no duplication of the landing cards or of each other.
+    - DONE: trimmed `histopathology.html`, `cytopathology.html`, `molecular-diagnostics.html`
+      (short intro → "What we offer") and de-duplicated the `services.html` hub (removed the
+      specimen lists / workflow / molecular-application cards that repeated the sub-pages).
+    - TODO: expand the landing "What We Do" cards (`index.html`) into a proper newbie + intermediate
+      guide — draft plain-language copy for client approval; touches the landing-page layout.
+- [~] **Training Institute service + form.** Page BUILT (`training-institute.html`) from the
+  client's copy, placed at the TOP of the Services page, and linked in the footer + mobile
+  menu. Uses "PATHMOLE EXPERT LLP" per client. STILL PENDING: the registration form — client
+  to supply the Google Form (embed) or its field list (native form); a bracketed placeholder
+  sits on the page. Not yet added to the crowded desktop top-nav (surfaced via Services + footer).
+- [x] **Merge Case Studies + Research into ONE page.** DONE (2026-08-16): the Research
+  content now lives as a second section ("Research & References", soft-grey) on
+  `case-studies/index.html`, retitled **"Case Studies & Research"** (H1, breadcrumb, nav,
+  footer, mobile menu, chatbot rule + keywords all updated). `publications.html` retired to
+  a meta-refresh + JS redirect stub → `case-studies/` (noindex) so old bookmarks/newsletter
+  links still land correctly; removed from NAV/footer. De-identification (DPDP) rules unchanged.
+- [x] **New "Partner With Us" page + form.** DONE (2026-08-16): built `partner.html` from the
+  client's supplied copy (intro, "We can partner with" list, 4 "What we offer" cards, and the
+  full partnership enquiry form as a NATIVE styled form — text fields + `<select>` dropdowns for
+  partner type / services / monthly volume / mode / preferred contact, `id="enquiry-form"` so the
+  existing `js/main.js` validation + friendly no-endpoint message applies). Uses "PATHMOLE EXPERT
+  LLP" per client. Added to desktop nav, mobile menu, footer (Explore) and a new chatbot
+  `partner` rule. Form still needs a live submit endpoint (same Web3Forms/Formspree gap as the
+  contact form). NO pricing anywhere.
+- [ ] **Illustrations + stock imagery site-wide.** Add illustrations and licensed stock
+  images everywhere visuals are needed (section art, per-topic explainers, empty
+  placeholder tiles). Royalty-free/licensed sources only; keep brand palette; swap for real
+  lab photos once supplied.
+- [x] **Leadership photos + bios.** DONE (2026-08-16): both leadership cards (About +
+  Physicians) rebuilt as premium profile blocks — circular headshot, 4 credential chips,
+  one-line intro + 4 heavy highlights each, balanced in weight.
+    - Dr. Ashok Yadav: confirmed name/title/bio + headshot integrated (`assets/dr-ashok-yadav.jpg`).
+    - Dr. Arpan Gandhi: card rewritten from his profile (`docs/Dr-Arpan-Gandhi-Profile.md` — kept
+      private in docs/) with real specializations (ocular pathology, oncology, CAP/NABL, 200+
+      mentored); real photo cropped to a head-and-shoulders square (`assets/dr-arpan-gandhi.jpg`).
+    - REVIEW-WITH-CLIENT: Yadav's "built and led a leading North-India lab" is the de-named
+      version of the client's "Micro Path Labs, Gurugram" line (another lab entity on the
+      PathMole site). Confirm whether to name it. Gandhi's CAP/NABL/200+ claims are from his
+      public site — worth a quick client confirm before go-live.
+- [ ] **Full test list.** Client to provide the final confirmed test list → `data/tests.js`
+  (replaces the 15 samples). Still NO pricing anywhere.
 
 ---
 
@@ -142,12 +201,25 @@ Shared head / top bar + nav / footer + chatbot mount generated from `scripts/bui
 - **Awaiting from client:** vector logo, domain, real photos/videos, full tests list,
   Patient Form PDF, Google Maps embed link, Reporting Portal URL, form endpoint,
   GA4 ID, trust numbers, testimonials, accreditations, case studies.
-- **QUESTION FOR CLIENT — Dr. Ashok Yadav leadership card:** the client's content doc
-  named only Dr. Arpan Gandhi, but the contract names two principals — likely the client
-  forgot to include Dr. Ashok Yadav's details. A **placeholder** leadership card for him
-  has been added to `about.html` and `physicians.html`. **Ask the client:** (a) should he
-  appear on the site? (b) confirmed name spelling & title/designation, (c) short bio
-  (expertise, years of experience, role). Fill or remove the placeholder once confirmed.
+- **Awaiting from client (NEW SCOPE, 2026-08-14):** Training Institute content + its Google
+  Form (or fields for a native form); Partner-With-Us page content + form fields;
+  leadership photos of Dr. Arpan Gandhi and Dr. Ashok Yadav; approval of the plain-language
+  per-topic educational copy we'll draft; decision on Google-Form embed vs native form for
+  the Training Institute + Partner forms.
+- **REVIEW-WITH-CLIENT flags (raise at the next content review):**
+  - **"PATHMOLE EXPERT LLP"** — the Training Institute copy introduces this legal entity, but
+    the whole site is branded **"PathMole Expert Lab."** Confirm with the client what the LLP
+    name is / where it should appear (e.g. footer legal line, TI page only). Currently used
+    only inside the TI page body, as instructed.
+  - **Services-page order** — client's stated order (TI → Histopathology → Molecular) omits
+    **Cytopathology** and **Specialised Diagnostic Support**. Both were KEPT on the Services
+    page (after Histopathology/Molecular). Confirm whether they stay, merge, or move.
+  - **Training Institute in the desktop top-nav?** — left out to avoid crowding the 7-item bar;
+    confirm if the client wants a dedicated top-nav entry.
+- **Dr. Ashok Yadav leadership card — UPDATE (2026-08-14):** client now confirms he
+  **appears** on the site (resolves the earlier "should he appear?" question). Placeholder
+  cards on `about.html` + `physicians.html` stay until the client sends the **confirmed
+  name spelling & title/designation, a short bio, and a photo**.
 - Raw 4K hero source (`video/`) must be **excluded** from the public repo / live upload —
   ship only `assets/hero.mp4` + `assets/hero-poster.jpg`.
 - Do **not** build/replace the third-party Reporting Portal — link out only.

@@ -54,13 +54,70 @@
     });
   }
 
-  /* ---------- News strip dismiss ---------- */
+  /* ---------- News strip: rotate highlights + dismiss ---------- */
+  const newsStrip = document.getElementById("news-strip");
   const newsClose = document.getElementById("news-close");
-  if (newsClose) {
+  if (newsClose && newsStrip) {
     newsClose.addEventListener("click", () => {
-      const strip = document.getElementById("news-strip");
-      if (strip) strip.style.display = "none";
+      newsStrip.style.display = "none";
     });
+  }
+
+  const newsText = document.getElementById("news-text");
+  if (newsStrip && newsText) {
+    // Each item is a real, existing page — nothing invented. The first item is
+    // already rendered in the HTML, so the rotation starts from index 1.
+    const NEWS = [
+      { text: "In-house Training Institute — hands-on pathology education few diagnostic labs offer.", cta: "Explore →", href: "training-institute.html" },
+      { text: "Histopathology, cytopathology and molecular testing — under one roof.", cta: "See services →", href: "services.html" },
+      { text: "Reporting built on WHO, ASCO–CAP and CAP–AMP guidelines.", cta: "See research →", href: "case-studies/" },
+      { text: "Led by pathologists with decades of diagnostic experience.", cta: "Meet the team →", href: "physicians.html" },
+      { text: "Access your test reports online — secure and convenient.", cta: "Reports login →", href: "#" },
+      { text: "Refer cases or set up a lab tie-up — partner with us.", cta: "Partner with us →", href: "partner.html" }
+    ];
+    let idx = 0;
+    let paused = false;
+    setInterval(() => {
+      if (paused || newsStrip.style.display === "none") return;
+      idx = (idx + 1) % NEWS.length;
+      newsStrip.classList.add("is-swapping");
+      setTimeout(() => {
+        newsText.innerHTML = NEWS[idx].text;
+        newsStrip.classList.remove("is-swapping");
+      }, 400);
+    }, 7000);
+
+    /* ---------- "See all updates" popup (page-level modal) ---------- */
+    const newsAll = document.getElementById("news-all");
+    const newsPanel = document.getElementById("news-panel");
+    const newsList = document.getElementById("news-list");
+    if (newsAll && newsPanel && newsList) {
+      NEWS.forEach((it) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = it.href;
+        a.innerHTML = it.text + '<span class="news-item-cta">' + it.cta + "</span>";
+        li.appendChild(a);
+        newsList.appendChild(li);
+      });
+      const setPanel = (open) => {
+        newsPanel.hidden = !open;
+        newsAll.setAttribute("aria-expanded", open ? "true" : "false");
+        newsText.setAttribute("aria-expanded", open ? "true" : "false");
+        document.body.classList.toggle("news-open", open); // lock page scroll behind the popup
+        paused = open; // hold the rotation still while the popup is open
+      };
+      const toggle = () => setPanel(newsPanel.hidden);
+      newsAll.addEventListener("click", toggle);
+      newsText.addEventListener("click", toggle);
+      // Close on the × button or by clicking the dimmed backdrop.
+      newsPanel.addEventListener("click", (e) => {
+        if (e.target.closest("[data-news-close]") || e.target.id === "news-modal-x") setPanel(false);
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !newsPanel.hidden) setPanel(false);
+      });
+    }
   }
 
   /* ---------- Scroll reveal ---------- */
