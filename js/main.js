@@ -54,17 +54,11 @@
     });
   }
 
-  /* ---------- News strip: rotate highlights + dismiss ---------- */
+  /* ---------- News strip: rotate highlights ---------- */
   const newsStrip = document.getElementById("news-strip");
-  const newsClose = document.getElementById("news-close");
-  if (newsClose && newsStrip) {
-    newsClose.addEventListener("click", () => {
-      newsStrip.style.display = "none";
-    });
-  }
-
   const newsText = document.getElementById("news-text");
-  if (newsStrip && newsText) {
+  const newsCopy = document.getElementById("news-copy");
+  if (newsStrip && newsText && newsCopy) {
     // Each item is a real, existing page — nothing invented. The first item is
     // already rendered in the HTML, so the rotation starts from index 1.
     const NEWS = [
@@ -82,7 +76,7 @@
       idx = (idx + 1) % NEWS.length;
       newsStrip.classList.add("is-swapping");
       setTimeout(() => {
-        newsText.innerHTML = NEWS[idx].text;
+        newsCopy.innerHTML = NEWS[idx].text;
         newsStrip.classList.remove("is-swapping");
       }, 400);
     }, 7000);
