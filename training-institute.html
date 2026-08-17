@@ -155,10 +155,68 @@
   </section>
 
   <section class="section">
-    <div class="container">
-      <div class="section-head reveal"><span class="eyebrow">Register your interest</span><h2>Join an <span class="text-pink">upcoming programme</span></h2><p>Tell us your area of interest and we&rsquo;ll keep you informed as programmes, workshops and observerships open.</p></div>
-      <div class="notice reveal" style="max-width:760px;margin:0 auto 1.4rem">[PLACEHOLDER: Training Institute registration form &mdash; the client&rsquo;s Google Form will be embedded here, or a matching native form built to the client&rsquo;s field list. Pending the Google Form link / requirements list.]</div>
-      <div class="center" style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap"><a href="contact.html#enquiry" class="btn-primary">Enquire about training</a><a href="services.html" class="btn-ghost">&larr; Back to all services</a></div>
+    <div class="container" style="max-width:820px">
+      <div class="section-head reveal" id="enquiry"><span class="eyebrow">Register your interest</span><h2>Enquire about <span class="text-pink">training</span></h2><p>Tell us a little about yourself and your area of interest, and we&rsquo;ll keep you informed as programmes, workshops and observerships open.</p></div>
+      <form id="enquiry-form" class="form-card form-grid form-grid--2col reveal" novalidate>
+        <div class="form-head">
+          <div class="form-head-ico"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg></div>
+          <div><h3>Training Enquiry</h3><p>Share a few details and our team will get back to you as programmes open for registration.</p></div>
+        </div>
+        <p class="form-section-title">Your details</p>
+        <div class="field"><label for="t-name">Name *</label><input id="t-name" name="name" type="text" required placeholder="Your full name" /></div>
+        <div class="field"><label for="t-role">Current Role / Profession *</label>
+          <select id="t-role" name="role" required>
+            <option value="" selected disabled>Select an option&hellip;</option>
+            <option>Pathology resident / postgraduate student</option>
+            <option>Laboratory technician / technologist</option>
+            <option>Pathologist</option>
+            <option>Other healthcare professional</option>
+            <option>Medical / life-science graduate</option>
+            <option>Laboratory manager / quality professional</option>
+            <option>Setting up or upgrading a diagnostic laboratory</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field"><label for="t-phone">Mobile Number *</label><input id="t-phone" name="phone" type="tel" required placeholder="+91 " /></div>
+        <div class="field"><label for="t-email">Email Address *</label><input id="t-email" name="email" type="email" required placeholder="you@example.com" /></div>
+        <div class="field col-full"><label for="t-city">City / Location *</label><input id="t-city" name="city" type="text" required placeholder="City / location" /></div>
+
+        <p class="form-section-title">Your training interest</p>
+        <div class="field"><label for="t-area">Area of Interest *</label>
+          <select id="t-area" name="area_of_interest" required>
+            <option value="" selected disabled>Select an option&hellip;</option>
+            <option>Histopathology &amp; Laboratory Techniques</option>
+            <option>Molecular Diagnostics</option>
+            <option>Laboratory Quality &amp; Accreditation</option>
+            <option>Laboratory Operations &amp; Management</option>
+            <option>Diagnostic Leadership &amp; Professional Development</option>
+            <option>Not sure yet / General interest</option>
+          </select>
+        </div>
+        <div class="field"><label for="t-format">Preferred Format</label>
+          <select id="t-format" name="preferred_format">
+            <option value="" selected disabled>Select an option&hellip;</option>
+            <option>Hands-on workshop</option>
+            <option>Short-term observership</option>
+            <option>Certificate programme</option>
+            <option>Continuing professional development</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="field col-full"><label for="t-contact">Preferred Method of Contact</label>
+          <select id="t-contact" name="preferred_contact">
+            <option value="" selected disabled>Select an option&hellip;</option>
+            <option>Phone</option>
+            <option>WhatsApp</option>
+            <option>Email</option>
+          </select>
+        </div>
+        <div class="field col-full"><label for="t-msg">Anything specific you&rsquo;d like to learn? (optional)</label><textarea id="t-msg" name="message" placeholder="Tell us briefly what you&rsquo;re hoping to gain from the training."></textarea></div>
+        <button type="submit" class="btn-primary col-full">Submit Training Enquiry</button>
+        <p class="form-note col-full">This form emails the lab; no patient records are stored on the site. PathMole Training Institute &mdash; building people who build better diagnostics.</p>
+        <p class="form-status col-full" role="status" aria-live="polite"></p>
+      </form>
+      <div class="center" style="margin-top:1.4rem"><a href="services.html" class="btn-ghost">&larr; Back to all services</a></div>
     </div>
   </section>
   <section class="section cta-band">
