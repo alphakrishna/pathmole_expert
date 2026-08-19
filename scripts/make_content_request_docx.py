@@ -146,7 +146,7 @@ prompt("Confirm the lab phone number, WhatsApp number and email.",
        "Currently on site: +91 98998 22375 (call & WhatsApp), pathmolelab@gmail.com")
 prompt("Confirm the full address and opening hours.",
        "On site: Building No. 1164/1, 1st Floor, Shri JP Tower, New Railway Road, Opp. Fire Station, "
-       "Dayanand Colony, Sector 6, Gurugram (Haryana). Open daily 11:00 AM – 11:00 PM.")
+       "Dayanand Colony, Sector 6, Gurugram (Haryana). Open daily 8:00 AM – 8:00 PM.")
 prompt("Social media links (Facebook / Instagram / LinkedIn / other).", "Leave blank any you don’t have.")
 prompt("The Reports-Login / Reporting-Portal web address.", "The “Reports Login” button links here.")
 prompt("Vector logo file (SVG / AI / PDF) and website domain name.",

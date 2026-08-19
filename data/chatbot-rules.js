@@ -8,16 +8,21 @@
      { type: "contact" }                  → Call / WhatsApp / enquiry-form buttons
      { type: "enquiry" }                  → link to the general enquiry form
      { type: "none" }                     → answer only
+   Answers may use "\n" for line breaks — the bubble renders them (white-space: pre-wrap),
+   so short bulleted lists are fine.
    HARD RULE: never put a price anywhere. Pricing → { type: "contact" }.
    HARD RULE: do not invent tests, turnaround times, accreditations, or numbers.
+     Only the tests actually on the menu (see data/tests.js) may be named.
    The three real forms on the site:
      • General enquiry   → contact.html#enquiry
      • Partner enquiry   → partner.html#enquiry
      • Training enquiry  → training-institute.html#enquiry
+   Links use root-relative hrefs (e.g. "tests.html"); the engine adds "../" automatically
+   on pages inside /case-studies/, so keep them root-relative here.
    ============================================================= */
 const CHATBOT_CONFIG = {
   greeting:
-    "Hi! I'm the PathMole assistant. I know my way around the whole site — I can help you find a test, explain our services or the Training Institute, and point you to the right form (general, partner or training enquiry) or straight to the lab. What do you need?",
+    "Hi, I'm the PathMole assistant 👋\nAsk me about a test, our services, timings or the Training Institute — I'll give you the answer right here and point you to the right page or form. What can I help you find?",
   phone: "+919899822375",
   whatsapp: "919899822375",
   email: "pathmolelab@gmail.com",
@@ -26,7 +31,7 @@ const CHATBOT_CONFIG = {
   // quick-reply buttons shown first (by rule id)
   menu: ["find-test", "services", "training", "partner", "enquiry", "timings", "location", "pricing"],
   fallback:
-    "I'm not sure about that one — but I can still point you the right way. You can send us an enquiry or call the lab directly, and our team will help.",
+    "I didn't quite catch that — but I can still help. I know about our tests, services, timings, location, the Training Institute and partnerships. Try a keyword like “HPV”, “biopsy”, “timings” or “partner”, or reach the team directly:",
 };
 
 const CHATBOT_RULES = [
@@ -34,17 +39,24 @@ const CHATBOT_RULES = [
   {
     id: "find-test",
     label: "Find a test",
-    keywords: ["test", "tests", "biopsy", "ihc", "immunohistochemistry", "fish", "ngs", "pcr", "mutation", "egfr", "her2", "pdl1", "pd-l1", "msi", "mmr", "panel", "marker", "markers", "stain", "staining", "symptom", "indication", "which test"],
+    keywords: ["test", "tests", "test list", "test menu", "which test", "find a test", "find test", "list of tests", "all tests", "browse tests", "tests offered", "test page", "catalogue", "catalog", "symptom", "indication", "pcr", "panel"],
     answer:
-      "Tell me the test name or the symptom/indication, and I'll point you to it — or browse the full list by category.",
-    action: { type: "link", href: "tests.html", text: "Browse all tests" },
+      "Happy to help you find a test! A few of the ones we're asked for most:\n\n🔬 Histopathology — biopsies (small samples up to major resections), cell blocks & second opinions\n🧫 Cytology — Pap smear / LBC and fluid cytology\n🧬 Molecular (PCR) — HPV, Hepatitis B & C, HIV, Tuberculosis, HLA-B27, EBV, BCR-ABL, TORCH\n\nThat's just a snapshot — the full menu, grouped by category, is on the Tests page. Or tell me a specific test or symptom (e.g. “HPV”, “biopsy”, “hepatitis”) and I'll point you right to it.",
+    action: {
+      type: "links",
+      items: [
+        { href: "tests.html", text: "Browse all tests" },
+        { href: "molecular-diagnostics.html", text: "Molecular Diagnostics" },
+        { href: "histopathology.html", text: "Histopathology" },
+      ],
+    },
   },
   {
     id: "services",
     label: "Our services",
-    keywords: ["service", "services", "what do you do", "what you do", "histopathology", "histopath", "cytopathology", "cytology", "fnac", "pap smear", "molecular", "molecular diagnostics", "diagnostic support", "specialised", "specialized", "offer", "offerings"],
+    keywords: ["service", "services", "what do you do", "what you do", "histopathology", "histopath", "cytopathology", "cytology", "fnac", "molecular", "molecular diagnostics", "diagnostic support", "specialised", "specialized", "offer", "offerings", "department", "departments"],
     answer:
-      "We're a specialist Histopathology & Molecular Diagnostics referral lab, with cytopathology and specialised diagnostic support too. Pick an area to read more:",
+      "We're a specialist Histopathology & Molecular Diagnostics referral lab, with cytopathology and specialised diagnostic support alongside. Pick an area to read more:",
     action: {
       type: "links",
       items: [
@@ -57,13 +69,117 @@ const CHATBOT_RULES = [
     },
   },
 
+  /* ---------- Specific tests / conditions (real menu only) ----------
+     These win when a user types the bare term (e.g. "HPV", "biopsy", "TB"), giving a
+     confident, specific answer instead of a generic redirect. Each links to the Tests
+     page plus the matching landmark case study for extra depth. */
+  {
+    id: "test-hpv-cervical",
+    label: "HPV / cervical screening",
+    keywords: ["hpv", "human papillomavirus", "papilloma", "cervical", "cervix", "pap", "pap smear", "lbc", "smear"],
+    answer:
+      "Yes — for cervical screening we offer HPV molecular (PCR) testing along with Pap smear / LBC cytology. Used together, they're the modern standard for catching cervical disease early. Pricing and sample requirements are shared on enquiry.",
+    action: {
+      type: "links",
+      items: [
+        { href: "tests.html", text: "See the test menu" },
+        { href: "case-studies/landmark-cervical-hpv-pap.html", text: "The Pap & HPV story" },
+      ],
+    },
+  },
+  {
+    id: "test-hepatitis-liver",
+    label: "Hepatitis B & C",
+    keywords: ["hepatitis", "hbv", "hcv", "hep b", "hep c", "hepb", "hepc", "liver", "jaundice", "cirrhosis"],
+    answer:
+      "We offer molecular (PCR) testing for Hepatitis B (HBV) and Hepatitis C (HCV) — the viruses behind most chronic liver disease and liver cancer. Detecting and monitoring them molecularly helps guide treatment.",
+    action: {
+      type: "links",
+      items: [
+        { href: "tests.html", text: "See the test menu" },
+        { href: "case-studies/landmark-hepatitis-liver-cancer.html", text: "Hepatitis & liver cancer" },
+      ],
+    },
+  },
+  {
+    id: "test-hiv",
+    label: "HIV testing",
+    keywords: ["hiv", "aids", "viral load", "retroviral", "arv"],
+    answer:
+      "Yes — we offer molecular HIV testing. Molecular (nucleic-acid) methods can detect the virus earlier than antibody tests and help measure viral load to monitor treatment.",
+    action: {
+      type: "links",
+      items: [
+        { href: "tests.html", text: "See the test menu" },
+        { href: "case-studies/landmark-hiv-molecular.html", text: "HIV: discovery to testing" },
+      ],
+    },
+  },
+  {
+    id: "test-tb",
+    label: "Tuberculosis (TB)",
+    keywords: ["tb", "tuberculosis", "koch", "mtb", "afb", "mycobacterium"],
+    answer:
+      "We offer molecular (PCR) detection of Mycobacterium tuberculosis (TB) — faster and more sensitive than older methods, which supports earlier diagnosis.",
+    action: {
+      type: "links",
+      items: [
+        { href: "tests.html", text: "See the test menu" },
+        { href: "case-studies/landmark-tuberculosis-molecular.html", text: "TB: Koch to molecular" },
+      ],
+    },
+  },
+  {
+    id: "test-hla-b27",
+    label: "HLA-B27",
+    keywords: ["hla", "b27", "hla-b27", "spondylitis", "ankylosing", "spondyloarthritis", "sacroiliitis"],
+    answer:
+      "Yes — we offer HLA-B27 testing, commonly used when investigating ankylosing spondylitis and related spondyloarthritis.",
+    action: {
+      type: "links",
+      items: [
+        { href: "tests.html", text: "See the test menu" },
+        { href: "case-studies/landmark-hla-b27-spondylitis.html", text: "HLA-B27 & spondylitis" },
+      ],
+    },
+  },
+  {
+    id: "test-biopsy",
+    label: "Biopsy / histopathology",
+    keywords: ["biopsy", "biopsies", "tissue", "resection", "specimen", "histology", "tumour", "tumor", "cancer", "carcinoma", "malignancy", "growth", "lump", "mass", "granuloma", "second opinion", "cell block"],
+    answer:
+      "Our core strength is histopathology — expert examination of biopsies from small samples right up to major resection specimens, plus cell blocks and second-opinion review on outside cases. It remains the gold standard for a tissue diagnosis.",
+    action: {
+      type: "links",
+      items: [
+        { href: "tests.html", text: "See the test menu" },
+        { href: "histopathology.html", text: "About histopathology" },
+        { href: "case-studies/landmark-carcinoma-biopsy.html", text: "Why the biopsy is gold standard" },
+      ],
+    },
+  },
+  {
+    id: "test-other-molecular",
+    label: "EBV / BCR-ABL / TORCH",
+    keywords: ["ebv", "epstein", "epstein-barr", "bcr", "abl", "bcr-abl", "philadelphia", "leukaemia", "leukemia", "torch", "toxoplasma", "rubella", "cmv", "cytomegalovirus", "herpes", "flu panel", "influenza"],
+    answer:
+      "Yes — our molecular menu also includes Epstein-Barr virus (EBV), BCR-ABL, TORCH by PCR and an influenza (flu) panel. Tell me which one and I'll point you to it, or see the full molecular menu.",
+    action: {
+      type: "links",
+      items: [
+        { href: "tests.html", text: "See the test menu" },
+        { href: "molecular-diagnostics.html", text: "Molecular Diagnostics" },
+      ],
+    },
+  },
+
   /* ---------- Training Institute (page + enquiry form) ---------- */
   {
     id: "training",
     label: "Training Institute",
     keywords: ["training", "institute", "course", "courses", "workshop", "workshops", "observership", "observerships", "learn", "education", "educational", "certificate", "certification", "cpd", "student", "students", "intern", "internship", "fellowship", "teaching", "upskill", "skills"],
     answer:
-      "The PathMole Training Institute offers practical, hands-on learning for pathology and laboratory professionals — histopathology techniques, molecular diagnostics, quality & accreditation, lab operations and more. You can read about it or enquire about training:",
+      "The PathMole Training Institute offers practical, hands-on learning for pathology and laboratory professionals — histopathology techniques, molecular diagnostics, quality & accreditation, lab operations and more. Read about it or send a training enquiry:",
     action: {
       type: "links",
       items: [
@@ -119,16 +235,16 @@ const CHATBOT_RULES = [
   {
     id: "timings",
     label: "Timings",
-    keywords: ["time", "timing", "timings", "hours", "open", "close", "closing", "when", "working", "daily"],
-    answer: "We're open daily, 11:00 AM – 11:00 PM.",
+    keywords: ["time", "timing", "timings", "hours", "open", "close", "closing", "when", "working", "daily", "weekend", "sunday"],
+    answer: "We're open every day, 8:00 AM – 8:00 PM (including weekends).",
     action: { type: "none" },
   },
   {
     id: "location",
     label: "Location",
-    keywords: ["location", "address", "where", "map", "directions", "reach", "gurugram", "gurgaon", "sector 6", "how to reach"],
+    keywords: ["location", "address", "where", "map", "directions", "reach", "gurugram", "gurgaon", "sector 6", "how to reach", "haryana"],
     answer:
-      "We're at Building No. 1164/1, 1st Floor, Shri JP Tower, New Railway Road, Opp. Fire Station, Dayanand Colony, Sector 6, Gurugram (Haryana).",
+      "You'll find us at:\nBuilding No. 1164/1, 1st Floor, Shri JP Tower, New Railway Road, Opp. Fire Station, Dayanand Colony, Sector 6, Gurugram (Haryana).\n\nHappy to share directions — the contact page has the map and details.",
     action: { type: "link", href: "contact.html", text: "Contact & directions" },
   },
   {
@@ -136,7 +252,7 @@ const CHATBOT_RULES = [
     label: "Pricing",
     keywords: ["price", "cost", "charges", "fee", "fees", "rate", "rates", "how much", "pricing", "quote"],
     answer:
-      "We share pricing directly so we can guide you accurately. Please contact the lab and our team will help.",
+      "We share pricing directly so we can guide you accurately for your specific test and sample. Drop us a message or call and the team will help right away:",
     action: { type: "contact" }, // renders Call / WhatsApp — never a price
   },
   {
@@ -144,15 +260,15 @@ const CHATBOT_RULES = [
     label: "Report timing",
     keywords: ["turnaround", "tat", "how long", "how many days", "report time", "ready", "when will", "duration", "delivery", "days"],
     answer:
-      "Turnaround depends on the specimen and the test — our team will give you an accurate timeline for your case. The fastest way is to ask us directly:",
+      "Turnaround depends on the specimen and the test — some are quick, others (like complex histopathology) take longer. Tell us the test and we'll give you an accurate timeline for your case:",
     action: { type: "contact" },
   },
   {
     id: "reports",
     label: "Reports login",
-    keywords: ["report", "reports", "login", "log in", "result", "results", "portal", "download report", "online report"],
+    keywords: ["report", "reports", "login", "log in", "result", "results", "portal", "download report", "online report", "collect report"],
     answer:
-      "Reports are available through our online reporting portal. Use the ‘Reports Login’ button at the top of the site.",
+      "Reports are available through our online reporting portal — just tap the “Reports Login ↗” button at the top of any page. If you're a referring doctor and need portal access set up, contact the lab and we'll help.",
     action: { type: "none" },
   },
 
@@ -168,7 +284,7 @@ const CHATBOT_RULES = [
   {
     id: "team",
     label: "Our team",
-    keywords: ["doctor", "doctors", "pathologist", "pathologists", "team", "physician", "physicians", "leadership", "consultant", "for clinicians", "clinician", "clinicians", "arpan", "gandhi", "ashok", "yadav", "director", "founder"],
+    keywords: ["doctor", "doctors", "pathologist", "pathologists", "team", "physician", "physicians", "leadership", "consultant", "for clinicians", "clinician", "clinicians", "director", "founder"],
     answer:
       "Our lab is led by experienced pathologists, and we work closely with referring clinicians. Meet the team:",
     action: { type: "link", href: "physicians.html", text: "Our team & for clinicians" },
@@ -184,9 +300,9 @@ const CHATBOT_RULES = [
   {
     id: "case-studies",
     label: "Case studies & research",
-    keywords: ["case", "case study", "case studies", "newsletter", "blog", "research", "publication", "publications", "guideline", "guidelines", "reference", "references", "who classification", "asco", "cap"],
+    keywords: ["case", "case study", "case studies", "newsletter", "blog", "research", "publication", "publications", "guideline", "guidelines", "reference", "references", "who classification", "asco", "cap", "landmark"],
     answer:
-      "We publish de-identified case studies for referring doctors, alongside the classifications and guidelines our reporting is built on. Have a look:",
+      "We share landmark cases that shaped modern diagnostics, alongside the classifications and guidelines our reporting is built on. Have a look:",
     action: { type: "link", href: "case-studies/", text: "Case studies & research" },
   },
 
@@ -211,7 +327,7 @@ const CHATBOT_RULES = [
   {
     id: "faq",
     label: "FAQ",
-    keywords: ["faq", "faqs", "question", "questions", "doubt", "doubts", "frequently", "common questions", "help"],
+    keywords: ["faq", "faqs", "frequently", "common questions"],
     answer: "Many common questions are answered on our FAQ page:",
     action: { type: "link", href: "faq.html", text: "Read the FAQ" },
   },

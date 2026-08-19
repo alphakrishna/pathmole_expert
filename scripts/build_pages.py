@@ -43,11 +43,11 @@ def nav_html(active, p):
     return """  <div class="top-bar">
     <div class="container top-bar-inner">
       <span class="top-bar-item">&#128222; <a href="tel:+919899822375">+91 98998 22375</a></span>
-      <span class="top-bar-item hours">&#128340; Open daily, 11:00 AM &ndash; 11:00 PM</span>
+      <span class="top-bar-item hours">&#128340; Open daily, 8:00 AM &ndash; 8:00 PM</span>
       <div class="top-bar-actions">
         <a class="top-bar-cta" href="tel:+919899822375">Call Now</a>
         <a class="top-bar-cta wa" href="https://wa.me/919899822375" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-        <a class="top-bar-reports" href="#" target="_blank" rel="noopener noreferrer">Reports Login &#8599;</a>
+        <a class="top-bar-reports" href="https://lab.flabslis.com/doctor_report/6a7ec279748559c99815bded/68847dda7bf95259b914aae6" target="_blank" rel="noopener noreferrer">Reports Login &#8599;</a>
       </div>
     </div>
   </div>
@@ -63,7 +63,7 @@ def nav_html(active, p):
     </div>
     <div id="mobile-menu" class="mobile-menu">
       <ul>
-{mob}        <li><a href="#" target="_blank" rel="noopener noreferrer">REPORTS LOGIN &#8599;</a></li>
+{mob}        <li><a href="https://lab.flabslis.com/doctor_report/6a7ec279748559c99815bded/68847dda7bf95259b914aae6" target="_blank" rel="noopener noreferrer">REPORTS LOGIN &#8599;</a></li>
       </ul>
     </div>
   </nav>
@@ -100,7 +100,7 @@ def footer_html(p):
           <h4>Contact</h4>
           <p>Building No. 1164/1, 1st Floor, Shri JP Tower, New Railway Road, Opp. Fire Station, Dayanand Colony, Sector 6, Gurugram (Haryana)</p>
           <p>&#128222; <a href="tel:+919899822375">+91 98998 22375</a><br>&#9993; <a href="mailto:pathmolelab@gmail.com">pathmolelab@gmail.com</a></p>
-          <p>&#128340; Open daily, 11:00 AM &ndash; 11:00 PM</p>
+          <p>&#128340; Open daily, 8:00 AM &ndash; 8:00 PM</p>
         </div>
       </div>
       <div class="footer-bottom">
@@ -705,7 +705,7 @@ PAGES.append(dict(filename="contact.html", title="Contact", active="contact",
         <div class="info-list" style="margin:1.4rem 0 1.4rem">
           <div class="info-item"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div><div><strong>Phone / WhatsApp</strong><br><a href="tel:+919899822375">+91 98998 22375</a></div></div>
           <div class="info-item"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div><div><strong>Email</strong><br><a href="mailto:pathmolelab@gmail.com">pathmolelab@gmail.com</a></div></div>
-          <div class="info-item"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><strong>Hours</strong><br>Open daily, 11:00 AM &ndash; 11:00 PM</div></div>
+          <div class="info-item"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><strong>Hours</strong><br>Open daily, 8:00 AM &ndash; 8:00 PM</div></div>
         </div>
         <div class="map-card-embed">
           <div class="map-embed">
@@ -856,7 +856,7 @@ PAGES.append(dict(filename="patients.html", title="Patients", active="",
       <a href="assets/pathmole-patient-form.pdf" download class="btn-primary">Download Patient Form (PDF)</a>
       <p class="form-note" style="margin-top:.6rem">[PLACEHOLDER: add the PDF at assets/pathmole-patient-form.pdf]</p>
     </div>
-    <div class="reveal"><div class="map-card"><div class="map-card-head">Patient visual [PLACEHOLDER]</div><div class="map-card-body"><strong>Open daily, 11:00 AM &ndash; 11:00 PM</strong><p>Sector 6, Gurugram. Call +91 98998 22375 for any help.</p></div></div></div>
+    <div class="reveal"><div class="map-card"><div class="map-card-head">Patient visual [PLACEHOLDER]</div><div class="map-card-body"><strong>Open daily, 8:00 AM &ndash; 8:00 PM</strong><p>Sector 6, Gurugram. Call +91 98998 22375 for any help.</p></div></div></div>
   </div></section>
 """ + cta_band()))
 
@@ -865,7 +865,7 @@ PAGES.append(dict(filename="faq.html", title="FAQ", active="",
     desc="Frequently asked questions about PathMole Expert Lab.",
     main=phero("Frequently Asked Questions", "Quick answers — or ask our assistant any time.", "FAQ") + """
   <section class="section"><div class="container" style="max-width:800px">
-    <article class="card reveal" style="margin-bottom:1rem"><h3>What are your timings?</h3><p>We&rsquo;re open daily, 11:00 AM – 11:00 PM.</p></article>
+    <article class="card reveal" style="margin-bottom:1rem"><h3>What are your timings?</h3><p>We&rsquo;re open daily, 8:00 AM – 8:00 PM.</p></article>
     <article class="card reveal" style="margin-bottom:1rem"><h3>Where are you located?</h3><p>Sector 6, Gurugram (Haryana) — full address on our <a href="contact.html">Contact page</a>.</p></article>
     <article class="card reveal" style="margin-bottom:1rem"><h3>How do I get pricing?</h3><p>We share pricing directly on enquiry — please <a href="contact.html">contact the lab</a>.</p></article>
     <article class="card reveal" style="margin-bottom:1rem"><h3>Are case studies patient-identifiable?</h3><p>No. Every case study is fully de-identified, with no patient name, ID, or image.</p></article>

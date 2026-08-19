@@ -16,6 +16,17 @@
   const cfg = CHATBOT_CONFIG;
   const ruleById = (id) => CHATBOT_RULES.find((r) => r.id === id);
 
+  /* ---------- Link base path ----------
+     Rules use root-relative hrefs like "tests.html" / "case-studies/".
+     On pages inside /case-studies/ those would resolve one level too deep,
+     so prefix "../" there. Absolute/protocol/anchor links pass through. */
+  const BASE = /\/case-studies\//.test(location.pathname) ? "../" : "";
+  function resolveHref(href) {
+    if (!href) return href;
+    if (/^(https?:|tel:|mailto:|#|\/|\.\.\/)/.test(href)) return href;
+    return BASE + href;
+  }
+
   /* ---------- History persistence ----------
      - Link navigation between pages KEEPS the transcript.
      - A full reload CLEARS it (fresh session).
@@ -67,7 +78,7 @@
     <div class="chatbot-panel" id="cb-panel" role="dialog" aria-label="PathMole chat assistant" aria-modal="false">
       <div class="chatbot-header">
         <span class="dot"></span>
-        <div><strong>PathMole Assistant</strong><small>Typically replies with a link</small></div>
+        <div><strong>PathMole Assistant</strong><small>Ask me about tests, services &amp; more</small></div>
         <button class="chatbot-close" id="cb-close" aria-label="Close chat">&times;</button>
       </div>
       <div class="chatbot-body" id="cb-body"></div>
@@ -101,20 +112,20 @@
   function buildActionNodes(entry) {
     switch (entry.kind) {
       case "link":
-        return [chip(entry.text || "Open", "pink", null, entry.href)];
+        return [chip(entry.text || "Open", "pink", null, resolveHref(entry.href))];
       case "links":
-        return (entry.items || []).map((it) => chip(it.text || "Open", "pink", null, it.href));
+        return (entry.items || []).map((it) => chip(it.text || "Open", "pink", null, resolveHref(it.href)));
       case "contact":
         return [
           chip("📞 Call", null, null, "tel:" + cfg.phone),
           chip("WhatsApp", "wa", null, "https://wa.me/" + cfg.whatsapp),
-          chip("Send enquiry", "pink", null, cfg.enquiryHref || "contact.html#enquiry"),
+          chip("Send enquiry", "pink", null, resolveHref(cfg.enquiryHref || "contact.html#enquiry")),
         ];
       case "fallback":
         return [
           chip("📞 Call", null, null, "tel:" + cfg.phone),
           chip("WhatsApp", "wa", null, "https://wa.me/" + cfg.whatsapp),
-          chip("Send enquiry", "pink", null, cfg.enquiryHref || "contact.html#enquiry"),
+          chip("Send enquiry", "pink", null, resolveHref(cfg.enquiryHref || "contact.html#enquiry")),
         ];
       case "menu":
         return (cfg.menu || []).map((id) => {

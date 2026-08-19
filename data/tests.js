@@ -173,6 +173,27 @@ const TESTS = [
     symptoms: [],
     info: "Molecular detection of Mycobacterium tuberculosis (TB).",
   },
+  {
+    slug: "ebv-molecular",
+    name: "Epstein-Barr Virus (EBV)",
+    category: "Molecular Diagnostics",
+    symptoms: [],
+    info: "Molecular detection of Epstein-Barr virus (EBV).",
+  },
+  {
+    slug: "bcr-abl",
+    name: "BCR-ABL",
+    category: "Molecular Diagnostics",
+    symptoms: [],
+    info: "Molecular detection of the BCR-ABL fusion transcript.",
+  },
+  {
+    slug: "torch-pcr",
+    name: "TORCH by PCR",
+    category: "Molecular Diagnostics",
+    symptoms: [],
+    info: "PCR detection of TORCH infections (Toxoplasma, Rubella, Cytomegalovirus, Herpes simplex and others).",
+  },
 
   /* ---- FISH & Cytogenetics — DISABLED 2026-08-19 ----
      Lab not offering these yet (client-confirmed). Kept commented for easy re-enable.

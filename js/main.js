@@ -170,6 +170,59 @@
     updateCtaLines();
   }
 
+  /* ---------- Case scroller (horizontal carousel) ----------
+     Any [data-scroller] with a [data-scroller-track] becomes a swipeable,
+     arrow-navigable carousel that also auto-advances (looping back to the
+     start at the end). Auto-advance pauses on hover/focus/touch and is
+     disabled entirely when the user prefers reduced motion. */
+  const scrollers = document.querySelectorAll("[data-scroller]");
+  scrollers.forEach((scroller) => {
+    const track = scroller.querySelector("[data-scroller-track]");
+    if (!track) return;
+    const prev = scroller.querySelector(".scroller-arrow.prev");
+    const next = scroller.querySelector(".scroller-arrow.next");
+    const step = () => {
+      const card = track.querySelector(".case-card");
+      if (!card) return track.clientWidth * 0.8;
+      const cs = getComputedStyle(track);
+      const gap = parseFloat(cs.columnGap || cs.gap) || 24;
+      return card.getBoundingClientRect().width + gap;
+    };
+    const atEnd = () => track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    const atStart = () => track.scrollLeft <= 4;
+    const updateArrows = () => {
+      if (prev) prev.disabled = atStart();
+      if (next) next.disabled = atEnd();
+    };
+    const go = (dir) => {
+      if (dir > 0 && atEnd()) track.scrollTo({ left: 0, behavior: "smooth" });
+      else if (dir < 0 && atStart()) track.scrollTo({ left: track.scrollWidth, behavior: "smooth" });
+      else track.scrollBy({ left: dir * step(), behavior: "smooth" });
+    };
+    if (prev) prev.addEventListener("click", () => go(-1));
+    if (next) next.addEventListener("click", () => go(1));
+    track.addEventListener("scroll", updateArrows, { passive: true });
+    window.addEventListener("resize", updateArrows, { passive: true });
+    updateArrows();
+
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduce && track.children.length > 1) {
+      let timer = null;
+      const play = () => { if (!timer) timer = window.setInterval(() => go(1), 5000); };
+      const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+      play();
+      ["mouseenter", "focusin", "touchstart", "pointerdown"].forEach((ev) =>
+        scroller.addEventListener(ev, stop, { passive: true })
+      );
+      ["mouseleave", "focusout"].forEach((ev) =>
+        scroller.addEventListener(ev, () => { stop(); play(); }, { passive: true })
+      );
+      document.addEventListener("visibilitychange", () => {
+        stop(); if (!document.hidden) play();
+      });
+    }
+  });
+
   /* ---------- Enquiry form (front-end only) ----------
      Set FORM_ENDPOINT to a Web3Forms / Formspree URL to go live.
      Until then, the form validates and shows a friendly message. */
