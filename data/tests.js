@@ -3,51 +3,87 @@
    Edit here to manage the tests shown on tests.html.
    Each test: { slug, name, category, symptoms[], info }
    Categories used for grouping (see CATEGORY_ORDER below):
-     "Histopathology" · "Immunohistochemistry" · "Molecular Diagnostics" · "FISH & Cytogenetics"
+     "Histopathology" · "Molecular Diagnostics"
 
-   ⚠️ REPRESENTATIVE placeholder catalogue based on standard histopath + molecular
-   offerings — the CLIENT must confirm the actual test menu before launch.
-   (Cytopathology is intentionally excluded — out of scope.)
+   LIVE MENU: client-supplied 2026-08-19 — these are the ONLY tests the lab is offering
+   right now. The former placeholder Immunohistochemistry and FISH & Cytogenetics groups
+   are commented out below (kept for easy re-enable when the lab adds them).
+   A couple of names are pending client confirmation — see docs/TASKS.md REVIEW-WITH-CLIENT.
    ============================================================= */
 const CATEGORY_ORDER = [
   "Histopathology",
-  "Immunohistochemistry",
   "Molecular Diagnostics",
-  "FISH & Cytogenetics",
+  // DISABLED 2026-08-19 — lab not offering these yet (client-confirmed). Re-enable when live:
+  // "Immunohistochemistry",
+  // "FISH & Cytogenetics",
 ];
 
 const TESTS = [
-  /* ---- Histopathology ---- */
+  /* ---- Histopathology ----
+     Client-supplied menu (2026-08-19). Typos corrected; two names kept close to the
+     client's wording and PENDING CONFIRMATION (see docs/TASKS.md REVIEW-WITH-CLIENT flag):
+       • "Slides & Blocks" — exact service name / scope unconfirmed.
+       • "Fluid Cytology / LBC Pap Smear" — kept as one line; confirm if it's two tests,
+         and whether the cytology items belong under a separate Cytopathology group. */
   {
-    slug: "histopathology-biopsy",
-    name: "Histopathology — Biopsy",
+    slug: "small-biopsy",
+    name: "Small Biopsy",
     category: "Histopathology",
-    symptoms: ["Lump / swelling", "Suspicious lesion", "Endoscopic biopsy"],
-    info: "Microscopic (H&E) examination of tissue to establish or confirm a diagnosis.",
+    symptoms: [],
+    info: "Histopathological examination of a small biopsy specimen.",
   },
   {
-    slug: "histopathology-resection",
-    name: "Histopathology — Surgical Resection",
+    slug: "medium-biopsy",
+    name: "Medium Biopsy",
     category: "Histopathology",
-    symptoms: ["Post-surgical specimen", "Tumour staging"],
-    info: "Examination of resection specimens with synoptic (CAP-style) reporting where applicable.",
+    symptoms: [],
+    info: "Histopathological examination of a medium biopsy specimen.",
   },
   {
-    slug: "frozen-section",
-    name: "Frozen Section (Intraoperative)",
+    slug: "large-biopsy",
+    name: "Large Biopsy",
     category: "Histopathology",
-    symptoms: ["Intraoperative margin", "Rapid diagnosis"],
-    info: "Rapid tissue diagnosis during surgery — subject to prior arrangement.",
+    symptoms: [],
+    info: "Histopathological examination of a large specimen.",
   },
   {
-    slug: "special-stains",
-    name: "Special Stains (Histochemistry)",
+    slug: "extra-large-biopsy",
+    name: "Extra Large Biopsy",
     category: "Histopathology",
-    symptoms: ["Fungal / AFB workup", "Amyloid", "Fibrosis / iron"],
-    info: "PAS, GMS, ZN/AFB, Congo red, reticulin, trichrome and other special stains.",
+    symptoms: [],
+    info: "Histopathological examination of an extra-large / major resection specimen.",
+  },
+  {
+    slug: "second-opinion",
+    name: "Second Opinion",
+    category: "Histopathology",
+    symptoms: [],
+    info: "Expert review and second opinion on a histopathology case.",
+  },
+  {
+    slug: "cell-block",
+    name: "Cell Block",
+    category: "Histopathology",
+    symptoms: [],
+    info: "Cell block preparation and examination.",
+  },
+  {
+    slug: "slides-blocks",
+    name: "Slides & Blocks",
+    category: "Histopathology",
+    symptoms: [],
+    info: "Referred slides and paraffin blocks.",
+  },
+  {
+    slug: "fluid-cytology-lbc-pap",
+    name: "Fluid Cytology / LBC Pap Smear",
+    category: "Histopathology",
+    symptoms: [],
+    info: "Fluid cytology and liquid-based (LBC) Pap smear examination.",
   },
 
-  /* ---- Immunohistochemistry ---- */
+  /* ---- Immunohistochemistry — DISABLED 2026-08-19 ----
+     Lab not offering these yet (client-confirmed). Kept commented for easy re-enable.
   {
     slug: "ihc-diagnostic-panel",
     name: "IHC — Diagnostic / Lineage Panel",
@@ -83,38 +119,63 @@ const TESTS = [
     symptoms: ["Colorectal / endometrial", "Lynch screening"],
     info: "MMR protein panel for Lynch screening and immunotherapy assessment.",
   },
+  ---- end disabled Immunohistochemistry ---- */
 
-  /* ---- Molecular Diagnostics ---- */
+  /* ---- Molecular Diagnostics ----
+     Client-supplied menu (2026-08-19). Abbreviations expanded; confirm "Flu Panel" scope
+     and method with client (see docs/TASKS.md REVIEW-WITH-CLIENT flag). */
   {
-    slug: "egfr-mutation",
-    name: "EGFR Mutation Analysis",
+    slug: "hbv-molecular",
+    name: "Hepatitis B Virus (HBV)",
     category: "Molecular Diagnostics",
-    symptoms: ["Lung adenocarcinoma", "Targeted therapy selection"],
-    info: "Detects EGFR mutations relevant to TKI therapy selection.",
+    symptoms: [],
+    info: "Molecular detection of Hepatitis B virus (HBV).",
   },
   {
-    slug: "kras-nras-braf",
-    name: "KRAS / NRAS / BRAF Mutation Panel",
+    slug: "hcv-molecular",
+    name: "Hepatitis C Virus (HCV)",
     category: "Molecular Diagnostics",
-    symptoms: ["Colorectal carcinoma", "Anti-EGFR therapy"],
-    info: "RAS/RAF status to guide targeted therapy in colorectal and other cancers.",
+    symptoms: [],
+    info: "Molecular detection of Hepatitis C virus (HCV).",
   },
   {
-    slug: "ngs-solid-tumor",
-    name: "NGS — Solid Tumour Panel",
+    slug: "hiv-molecular",
+    name: "HIV",
     category: "Molecular Diagnostics",
-    symptoms: ["Comprehensive profiling", "Multiple targets"],
-    info: "Next-generation sequencing panel for comprehensive tumour profiling.",
+    symptoms: [],
+    info: "Molecular detection of HIV.",
   },
   {
-    slug: "msi-testing",
-    name: "MSI / MMR by Molecular Methods",
+    slug: "hla-b27",
+    name: "HLA-B27",
     category: "Molecular Diagnostics",
-    symptoms: ["Microsatellite instability", "Immunotherapy"],
-    info: "PCR/NGS-based microsatellite instability testing.",
+    symptoms: [],
+    info: "HLA-B27 molecular testing.",
+  },
+  {
+    slug: "flu-panel",
+    name: "Flu Panel",
+    category: "Molecular Diagnostics",
+    symptoms: [],
+    info: "Molecular influenza (flu) panel.",
+  },
+  {
+    slug: "hpv-molecular",
+    name: "Human Papillomavirus (HPV)",
+    category: "Molecular Diagnostics",
+    symptoms: [],
+    info: "Molecular detection of Human Papillomavirus (HPV).",
+  },
+  {
+    slug: "tb-molecular",
+    name: "Tuberculosis (TB)",
+    category: "Molecular Diagnostics",
+    symptoms: [],
+    info: "Molecular detection of Mycobacterium tuberculosis (TB).",
   },
 
-  /* ---- FISH & Cytogenetics ---- */
+  /* ---- FISH & Cytogenetics — DISABLED 2026-08-19 ----
+     Lab not offering these yet (client-confirmed). Kept commented for easy re-enable.
   {
     slug: "her2-fish",
     name: "HER2 FISH",
@@ -129,4 +190,5 @@ const TESTS = [
     symptoms: ["Lung adenocarcinoma", "Fusion detection"],
     info: "Break-apart FISH for ALK/ROS1 rearrangements.",
   },
+  ---- end disabled FISH & Cytogenetics ---- */
 ];

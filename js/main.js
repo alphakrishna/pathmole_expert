@@ -139,6 +139,37 @@
     revealEls.forEach((el) => el.classList.add("in"));
   }
 
+  /* ---------- CTA band accent line: fills/empties in lockstep with scroll ----------
+     Mapped across the whole scroll range from where the band first appears at the
+     viewport bottom (45%) to the very bottom of the page (100%). Every scroll tick
+     up or down moves the line proportionally — no flat/saturated stretch. */
+  const ctaBands = Array.prototype.slice.call(document.querySelectorAll(".cta-band"));
+  const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (ctaBands.length && !reduceMotion) {
+    const docEl = document.documentElement;
+    let lineTicking = false;
+    const updateCtaLines = () => {
+      lineTicking = false;
+      const vh = window.innerHeight || docEl.clientHeight;
+      const scrollY = window.scrollY || docEl.scrollTop;
+      const maxScroll = (docEl.scrollHeight || document.body.scrollHeight) - vh;
+      ctaBands.forEach((el) => {
+        const absTop = el.getBoundingClientRect().top + scrollY; // band's offset from doc top
+        const start = absTop - vh;                                // scrollY where band starts to appear
+        const denom = Math.max(1, maxScroll - start);             // travel until page bottom
+        let p = (scrollY - start) / denom;
+        p = p < 0 ? 0 : p > 1 ? 1 : p;
+        el.style.setProperty("--line-fill", (45 + p * 55).toFixed(1) + "%");
+      });
+    };
+    const onLineScroll = () => {
+      if (!lineTicking) { lineTicking = true; requestAnimationFrame(updateCtaLines); }
+    };
+    window.addEventListener("scroll", onLineScroll, { passive: true });
+    window.addEventListener("resize", onLineScroll, { passive: true });
+    updateCtaLines();
+  }
+
   /* ---------- Enquiry form (front-end only) ----------
      Set FORM_ENDPOINT to a Web3Forms / Formspree URL to go live.
      Until then, the form validates and shows a friendly message. */

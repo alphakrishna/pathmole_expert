@@ -102,6 +102,8 @@
     switch (entry.kind) {
       case "link":
         return [chip(entry.text || "Open", "pink", null, entry.href)];
+      case "links":
+        return (entry.items || []).map((it) => chip(it.text || "Open", "pink", null, it.href));
       case "contact":
         return [
           chip("📞 Call", null, null, "tel:" + cfg.phone),
@@ -156,6 +158,8 @@
     if (!action || action.type === "none") return;
     if (action.type === "link") {
       record({ t: "action", kind: "link", text: action.text || "Open", href: action.href });
+    } else if (action.type === "links") {
+      record({ t: "action", kind: "links", items: action.items || [] });
     } else if (action.type === "enquiry") {
       record({ t: "action", kind: "link", text: action.text || "Open the enquiry form", href: cfg.enquiryHref || "contact.html#enquiry" });
     } else if (action.type === "contact") {

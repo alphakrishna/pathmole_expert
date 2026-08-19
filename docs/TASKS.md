@@ -207,6 +207,25 @@ Shared head / top bar + nav / footer + chatbot mount generated from `scripts/bui
   per-topic educational copy we'll draft; decision on Google-Form embed vs native form for
   the Training Institute + Partner forms.
 - **REVIEW-WITH-CLIENT flags (raise at the next content review):**
+  - **Histopathology test list (client-supplied 2026-08-19)** — client sent: Small Biopsy,
+    Medium Biopsy, Large Biopsy, Extra Large Biopsy, Second Opinion, Cell Block, "slides Block
+    issues", "Floid Cytology Lb PAP smear test". Entered into `data/tests.js` under the
+    **Histopathology** category with obvious typos fixed (Opinon→Opinion, Floid→Fluid, Lb→LBC).
+    CONFIRM WITH CLIENT: (1) exact name/scope of **"Slides & Blocks"** (review of referred
+    slides/blocks? recuts? issuing?); (2) whether **"Fluid Cytology / LBC Pap Smear"** is ONE
+    item or TWO (Fluid Cytology + LBC Pap Smear); (3) whether the cytology items (Cell Block,
+    Fluid/Pap) should move to a separate **Cytopathology** group (currently all under
+    Histopathology per instruction); (4) whether the earlier placeholder histopath services
+    (Surgical Resection, Frozen Section, Special Stains) were dropped intentionally — they were
+    REPLACED by this list. NO prices anywhere (per standing rule).
+  - **Molecular test list (client-supplied 2026-08-19)** — client sent: HBV, HCV, HIV, HLAB-27,
+    FluPanel, HPV, TB. Entered into `data/tests.js` under **Molecular Diagnostics** with
+    abbreviations expanded (HLAB-27→HLA-B27, FluPanel→Flu Panel). These REPLACED the earlier
+    placeholder molecular-oncology entries (EGFR, KRAS/NRAS/BRAF, NGS solid-tumour, MSI).
+    CONFIRM WITH CLIENT: (1) exact scope/method of **"Flu Panel"** (influenza only? full
+    respiratory panel? PCR?); (2) HLA-B27 is a genetic marker (not infectious) — confirm it
+    belongs in this molecular group; (3) whether the oncology molecular + IHC + FISH placeholder
+    entries should stay or be dropped. NO prices anywhere.
   - **"PATHMOLE EXPERT LLP"** — the Training Institute copy introduces this legal entity, but
     the whole site is branded **"PathMole Expert Lab."** Confirm with the client what the LLP
     name is / where it should appear (e.g. footer legal line, TI page only). Currently used
