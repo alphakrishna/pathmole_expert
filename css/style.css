@@ -84,6 +84,7 @@ p:last-child { margin-bottom: 0; }
 .section-head { max-width: 720px; margin: 0 auto 2.6rem; text-align: center; }
 .section-head p { color: var(--ink-600); margin-top: .5rem; }
 .grid { display: grid; gap: 1.5rem; }
+.grid > * { min-width: 0; } /* let grid children shrink below content min-size (e.g. video intrinsic width) so single-column mobile never overflows */
 .center { text-align: center; }
 
 /* ---------- 5. Buttons ---------- */
@@ -115,7 +116,7 @@ p:last-child { margin-bottom: 0; }
 .top-bar-inner { display: flex; align-items: center; gap: 1.3rem; min-height: 42px; flex-wrap: wrap; }
 .top-bar-item { display: inline-flex; align-items: center; gap: .4rem; }
 .top-bar-item.hours { color: rgba(255,255,255,.7); }
-.top-bar-actions { display: flex; align-items: center; gap: .55rem; margin-left: auto; }
+.top-bar-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem .55rem; margin-left: auto; }
 .top-bar-cta {
   display: inline-flex; align-items: center; gap: .35rem;
   padding: .4rem 1.05rem; border-radius: 999px; font-weight: 600; font-size: .78rem; letter-spacing: .01em;
@@ -422,7 +423,7 @@ body.news-open { overflow: hidden; }
 .case-grid { grid-template-columns: repeat(3, 1fr); }
 .case-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform .25s ease, box-shadow .25s ease; height: 100%; display: flex; flex-direction: column; }
 .case-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-.case-thumb { aspect-ratio: 16/9; background: linear-gradient(135deg, var(--brand-navy), var(--brand-pink)); display: grid; place-items: center; color: rgba(255,255,255,.85); flex-shrink: 0; }
+.case-thumb { position: relative; aspect-ratio: 16/9; background: linear-gradient(135deg, var(--brand-navy), var(--brand-pink)); display: grid; place-items: center; color: rgba(255,255,255,.85); flex-shrink: 0; overflow: hidden; }
 .case-body { padding: 1.4rem; display: flex; flex-direction: column; flex: 1; }
 .case-tag { font-family: var(--font-heading); font-weight: 600; font-size: .72rem; letter-spacing: .5px; text-transform: uppercase; color: var(--accent); }
 /* Fixed 2-line title block so every card aligns to the same height */
@@ -435,7 +436,9 @@ body.news-open { overflow: hidden; }
 /* Photo/diagram banner inside the card thumb. All banners are landscape, so use
    `cover` to fill the 16:9 frame edge-to-edge — every card banner is then the exact
    same size, with only minor cropping. */
-.case-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+/* Absolutely positioned so a large source image can't grow the grid row and
+   override the 16:9 aspect-ratio — every thumb is then the exact same height. */
+.case-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
 
 /* ---------- Case scroller (horizontal carousel) ---------- */
 .case-scroller { position: relative; }
@@ -480,14 +483,30 @@ body.news-open { overflow: hidden; }
 .case-figure figcaption { margin-top: .8rem; font-size: .85rem; color: var(--ink-400); line-height: 1.55; text-align: left; }
 /* Floated variant — article text wraps alongside the image */
 .case-figure--float { float: right; max-width: 320px; margin: .4rem 0 1.2rem 1.9rem; }
+/* Facility photo in the About "Our story" row */
+.about-figure { margin: 0 auto; max-width: 420px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow-md); background: #fff; transition: transform .3s ease, box-shadow .3s ease; }
+.about-figure img { width: 100%; height: auto; aspect-ratio: 3/2; object-fit: cover; display: block; transition: transform .6s ease; }
+.about-figure:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.about-figure:hover img { transform: scale(1.05); }
+.about-figure figcaption { padding: 1.4rem; font-size: .9rem; color: var(--ink-600); line-height: 1.6; }
+.about-figure figcaption strong { color: var(--brand-navy); font-family: var(--font-heading); display: block; margin-bottom: .2rem; font-size: 1rem; }
+.about-figure figcaption p { margin: 0; }
 @media (max-width: 640px) { .case-figure--float { float: none; max-width: 420px; margin: 1.8rem auto; } }
 /* Contain the float so the disclaimer and the next section clear it */
 .ref-detail::after { content: ""; display: block; clear: both; }
 .ref-detail .notice { clear: both; }
+/* Premium decorative illustration floated alongside the Key points block */
+.case-art { margin: 0; }
+.case-art svg { width: 100%; height: auto; display: block; }
+.case-art--float { float: right; width: 300px; max-width: 46%; margin: .3rem 0 1.4rem 2rem; }
+@media (max-width: 640px) { .case-art--float { float: none; width: auto; max-width: 360px; margin: 1.4rem auto 1.8rem; } }
 /* Alternating illustrated rows on each explainer page (text on one side, art on the other) */
 .ref-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2.8rem; align-items: center; margin: 2.6rem 0; }
 .ref-row__art { min-width: 0; }
 .ref-row__art svg { width: 100%; height: auto; max-width: 100%; display: block; border-radius: var(--radius-lg); background: var(--bg-soft); }
+/* Real photo in place of an illustration inside a row's art cell */
+.ref-row__art .case-figure { margin: 0; max-width: none; }
+.ref-row__art .case-figure img { width: 100%; }
 .ref-row__text h2 { font-size: 1.18rem; margin: 0 0 .6rem; padding: 0; border: 0; }
 .ref-row__text p { margin: 0; color: var(--ink-600); }
 @media (min-width: 768px) {
@@ -743,6 +762,14 @@ body.news-open { overflow: hidden; }
   .form-grid--2col .btn-primary { justify-self: stretch; width: 100%; }
 }
 
+.section-video { margin: 0 auto; max-width: 420px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow-md); background: #fff; transition: transform .3s ease, box-shadow .3s ease; }
+.section-video__player { display: block; width: 100%; height: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: center; background: #000; transition: transform .6s ease; }
+.section-video:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.section-video:hover .section-video__player { transform: scale(1.04); }
+.section-video__cap { padding: 1.4rem; }
+.section-video__cap strong { color: var(--brand-navy); font-family: var(--font-heading); display: block; margin-bottom: .2rem; }
+.section-video__cap p { margin: 0; }
+
 .map-card { border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); background: #fff; }
 .map-card-head { background: linear-gradient(135deg, var(--brand-navy), var(--brand-pink)); height: 150px; display: grid; place-items: center; color: rgba(255,255,255,.9); font-family: var(--font-heading); font-weight: 600; }
 .map-card-body { padding: 1.4rem; }
@@ -891,6 +918,9 @@ body.news-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; transition: none; }
+  .about-figure, .about-figure img, .section-video, .section-video__player { transition: none; }
+  .about-figure:hover, .section-video:hover { transform: none; }
+  .about-figure:hover img, .section-video:hover .section-video__player { transform: none; }
 }
 
 /* ---------- 17. Responsive ---------- */
@@ -920,7 +950,17 @@ body.news-open { overflow: hidden; }
   .hero .hero-sub { font-size: 1.02rem; margin: .9rem 0 1.5rem; }
   .hero .tagline { margin-top: 1.2rem; }
 }
+@media (max-width: 430px) {
+  /* Shrink the top-bar action pills so Call / WhatsApp / Reports fit small phones
+     without horizontal overflow; they also wrap gracefully via flex-wrap if needed. */
+  .top-bar-actions { gap: .4rem; }
+  .top-bar-cta { padding: .4rem .78rem; font-size: .74rem; }
+  .top-bar-reports { padding: .42rem .8rem; font-size: .74rem; }
+}
 @media (max-width: 400px) {
   .container { padding: 0 1rem; }
   .hero .hero-sub { font-size: .98rem; }
+  /* Slightly smaller buttons on very small phones so long labels
+     (e.g. "Explore the Training Institute") don't force horizontal scroll. */
+  .btn-primary, .btn-secondary, .btn-ghost { font-size: .9rem; padding: .7rem 1.15rem; }
 }

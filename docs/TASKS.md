@@ -73,6 +73,40 @@
 
 ---
 
+## ⚑ DO TOMORROW — 2026-08-21
+> **Activate the enquiry forms.** Contact / Partner / Training forms are fully wired to
+> **Web3Forms** but delivery is OFF until the access key is pasted.
+> 1. Create a free key at **web3forms.com** using **pathmolelab@gmail.com** (key arrives by email).
+> 2. Paste it into `js/main.js` → `const WEB3FORMS_ACCESS_KEY = "…"` (marked with a ⚑ TODO).
+> Then submit a live test from each of the 3 forms and confirm the email lands.
+> _(Alternative if preferred: Formspree or an embedded Google Form.)_
+
+## ✅ CONTENT & DESIGN LOCKED — 2026-08-20
+> Client signed off. **All REVIEW-WITH-CLIENT flags below are RESOLVED = keep as currently
+> implemented.** Do NOT re-open them. Confirmed final:
+> - **Slides & Blocks**, **Fluid Cytology / LBC Pap Smear** (one line), cytology items stay under
+>   **Histopathology**, dropped histopath placeholders (Surgical Resection / Frozen Section /
+>   Special Stains) stay dropped.
+> - **Flu Panel** kept as-is; **HLA-B27** stays in **Molecular Diagnostics**; oncology-molecular,
+>   **IHC** and **FISH** groups stay **hidden** (commented out in `data/tests.js`).
+> - **"PATHMOLE EXPERT LLP"** stays on the **Training Institute page only**.
+> - Services order kept (Cytopathology + Specialised Diagnostic Support remain); **no** Training
+>   Institute entry in the desktop top-nav (surfaced via Services + footer).
+> - Dr. Ashok Yadav's prior lab kept **generic**; Dr. Arpan Gandhi's CAP/NABL/"200+ mentored"
+>   credentials **cleared to publish**.
+> - This session: **Reports Login URL** wired site-wide; **hours** → **8:00 AM – 8:00 PM**
+>   everywhere; chatbot rewritten (active, menu-accurate, subdirectory links fixed).
+>
+> **STILL PENDING — client to supply 3 assets (only drop-in blockers):**
+> - [ ] **Patient Form PDF** → `assets/pathmole-patient-form.pdf` (link live at `patients.html:88`)
+> - [ ] **Lab photos** → 6 `Photo [PLACEHOLDER]` tiles in `gallery.html`
+> - [ ] **Lab videos** → 2 `YouTube embed [PLACEHOLDER]` tiles in `videos.html`
+>
+> **Launch-infra still needing real values (not "content", handle at go-live):** form submit
+> endpoint (Contact/Partner/Training still show "call us"), Training Institute registration form,
+> social links + Google Maps embed (still `#`/placeholder), vector logo (PNG in use), domain +
+> Zoho email, GA4 ID.
+
 ## Phase 0 — Planning & Docs
 - [x] Confirm lab type (specialist Histopathology + Molecular referral lab, Gurugram)
 - [x] Confirm structure (hybrid funnel) + stack (static HTML/CSS/JS on GoDaddy)
@@ -198,9 +232,13 @@ Shared head / top bar + nav / footer + chatbot mount generated from `scripts/bui
 `[x]` done · `[~]` partial / in progress · `[ ]` not started
 
 ### Notes / Blockers
-- **Awaiting from client:** vector logo, domain, real photos/videos, full tests list,
-  Patient Form PDF, Google Maps embed link, Reporting Portal URL, form endpoint,
-  GA4 ID, trust numbers, testimonials, accreditations, case studies.
+- **2026-08-20 — CONTENT & DESIGN LOCKED (see top of file).** REVIEW-WITH-CLIENT flags below are
+  RESOLVED (keep as implemented). Full tests list, Reporting Portal URL and hours are now DONE.
+- **Still awaiting from client — 3 drop-in assets:** Patient Form PDF
+  (`assets/pathmole-patient-form.pdf`), real lab photos (gallery), lab videos (videos page).
+- **Launch-infra still needing real values (go-live):** vector logo, domain + Zoho email,
+  Google Maps embed, social links, enquiry/partner/training form endpoint, Training Institute
+  registration form, GA4 ID, trust numbers/testimonials/accreditations (only if confirmed).
 - **Awaiting from client (NEW SCOPE, 2026-08-14):** Training Institute content + its Google
   Form (or fields for a native form); Partner-With-Us page content + form fields;
   leadership photos of Dr. Arpan Gandhi and Dr. Ashok Yadav; approval of the plain-language

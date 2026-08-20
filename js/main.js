@@ -223,43 +223,81 @@
     }
   });
 
-  /* ---------- Enquiry form (front-end only) ----------
-     Set FORM_ENDPOINT to a Web3Forms / Formspree URL to go live.
-     Until then, the form validates and shows a friendly message. */
-  const FORM_ENDPOINT = ""; // TODO: paste Web3Forms/Formspree endpoint
+  /* ---------- Enquiry / Partner / Training forms ----------
+     Delivery via Web3Forms (https://web3forms.com) — free, no backend: the form
+     data is emailed straight to the lab, and submissions also show in the Web3Forms
+     dashboard. To GO LIVE, paste the free access key below (create one in ~1 min at
+     web3forms.com using the lab's email — the key is emailed to that address; it is
+     safe to expose in front-end code). Until a key is set, each form still validates
+     and shows a friendly "call us" message, so nothing looks broken pre-launch.
+     One form per page, all id="enquiry-form"; the optional data-subject sets the email subject. */
+  // ⚑ TODO (DO TOMORROW — 2026-08-21): paste the free Web3Forms access key below to turn on
+  //   form delivery. Create it at web3forms.com using pathmolelab@gmail.com (the key is emailed
+  //   there). Until this is filled, all 3 forms show the graceful "call us" fallback.
+  const WEB3FORMS_ACCESS_KEY = ""; // <-- PASTE WEB3FORMS ACCESS KEY HERE
+  const FORM_ENDPOINT = "https://api.web3forms.com/submit";
   const form = document.getElementById("enquiry-form");
   if (form) {
     const status = form.querySelector(".form-status");
+    const submitBtn = form.querySelector('[type="submit"]');
+    // keep the layout class (partner/training status spans the full 2-col grid)
+    const statusBase = "form-status" + (status && status.classList.contains("col-full") ? " col-full" : "");
+    const setStatus = (msg, ok) => {
+      if (!status) return;
+      status.textContent = msg;
+      status.className = statusBase + (ok ? " ok" : " err");
+    };
+
+    // Web3Forms honeypot: hidden, unchecked for humans — bots that tick it are dropped.
+    const honeypot = document.createElement("input");
+    honeypot.type = "checkbox";
+    honeypot.name = "botcheck";
+    honeypot.tabIndex = -1;
+    honeypot.setAttribute("aria-hidden", "true");
+    honeypot.style.cssText = "display:none !important;position:absolute;left:-9999px";
+    form.appendChild(honeypot);
+
     form.addEventListener("submit", async (ev) => {
       ev.preventDefault();
       if (!form.checkValidity()) { form.reportValidity(); return; }
-      const setStatus = (msg, ok) => {
-        if (!status) return;
-        status.textContent = msg;
-        status.className = "form-status " + (ok ? "ok" : "err");
-      };
-      if (!FORM_ENDPOINT) {
+
+      // No key yet → graceful pre-launch fallback (nothing appears broken).
+      if (!WEB3FORMS_ACCESS_KEY) {
         setStatus(
-          "Thanks! Form delivery isn't connected yet — meanwhile, please call or WhatsApp us at +91 98998 22375.",
+          "Thanks! Online delivery isn't switched on yet — meanwhile, please call or WhatsApp us at +91 98998 22375.",
           true
         );
         form.reset();
         return;
       }
+
+      const data = new FormData(form);
+      data.append("access_key", WEB3FORMS_ACCESS_KEY);
+      data.append("subject", form.getAttribute("data-subject") || ("New enquiry — " + document.title));
+      if (!data.get("from_name")) data.append("from_name", "PathMole Expert Lab website");
+
+      const originalLabel = submitBtn ? submitBtn.textContent : "";
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Sending…"; }
+      setStatus("Sending your enquiry…", true);
+
       try {
         const res = await fetch(FORM_ENDPOINT, {
           method: "POST",
           headers: { Accept: "application/json" },
-          body: new FormData(form),
+          body: data,
         });
-        if (res.ok) {
-          setStatus("Thank you — your enquiry has been sent. We'll be in touch shortly.", true);
+        let ok = res.ok;
+        try { const json = await res.json(); ok = !!(json && json.success); } catch (_) {}
+        if (ok) {
+          setStatus("Thank you — your enquiry has been sent. Our team will be in touch shortly.", true);
           form.reset();
         } else {
-          setStatus("Something went wrong. Please call or WhatsApp us at +91 98998 22375.", false);
+          setStatus("Sorry, that didn't go through. Please call or WhatsApp us at +91 98998 22375.", false);
         }
       } catch (_) {
-        setStatus("Network error. Please call or WhatsApp us at +91 98998 22375.", false);
+        setStatus("Network error — please call or WhatsApp us at +91 98998 22375.", false);
+      } finally {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalLabel; }
       }
     });
   }
